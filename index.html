@@ -6,34 +6,41 @@
 
 <title>Cockroach Crypto Party 🪳 | $CCP</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Orbitron',sans-serif;
-}
+/* RESET */
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
+font-family:'Poppins',sans-serif;
 background:#050505;
 color:white;
 overflow-x:hidden;
 }
 
-/* TOP BAR */
-.topbar{
+/* LOADER */
+#loader{
 position:fixed;
-top:0;
 width:100%;
-background:#8cff00;
-color:black;
-text-align:center;
-padding:8px;
-font-weight:bold;
-z-index:999;
+height:100%;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:9999;
+}
+
+.loader-logo{
+font-size:60px;
+animation:spin 2s infinite linear;
+}
+
+@keyframes spin{
+0%{transform:rotate(0deg);}
+100%{transform:rotate(360deg);}
 }
 
 /* HEADER */
@@ -43,56 +50,60 @@ text-align:center;
 background:linear-gradient(135deg,#000,#163300);
 }
 
-/* LOGO */
 .logo img{
 width:150px;
 border-radius:50%;
 box-shadow:0 0 30px #8cff00;
 }
 
-/* TITLE */
 h1{
+font-family:'Orbitron',sans-serif;
 font-size:48px;
 color:#8cff00;
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{ text-shadow:0 0 10px #8cff00;}
-to{ text-shadow:0 0 30px #8cff00;}
+text-shadow:0 0 20px #8cff00;
 }
 
 .tagline{
 font-size:20px;
-margin:10px 0;
+margin-top:10px;
 }
 
-/* BUTTONS */
+/* BUTTON */
 .btn{
 display:inline-block;
 margin:10px;
 padding:14px 28px;
 border-radius:30px;
-background:#8cff00;
+background:linear-gradient(45deg,#8cff00,#00ffcc);
 color:black;
-text-decoration:none;
 font-weight:bold;
-box-shadow:0 0 15px #8cff00;
+text-decoration:none;
 transition:.3s;
+box-shadow:0 0 20px rgba(140,255,0,0.6);
 }
 
 .btn:hover{
 transform:scale(1.1);
-background:white;
+box-shadow:0 0 30px #8cff00;
 }
 
-/* SECTIONS */
+/* SECTION */
 section{
 padding:60px 10%;
 }
 
 h2{
+font-family:'Orbitron';
 color:#8cff00;
+margin-bottom:20px;
+}
+
+/* CARD */
+.card{
+background:#111;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 15px rgba(140,255,0,0.2);
 margin-bottom:20px;
 }
 
@@ -103,42 +114,19 @@ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 }
 
-/* CARD */
-.card{
-background:#111;
-padding:25px;
-border-radius:15px;
-box-shadow:0 0 15px rgba(140,255,0,0.2);
-transition:.3s;
+/* FADE */
+.fade{
+opacity:0;
+transform:translateY(40px);
+transition:1s;
 }
 
-.card:hover{
-transform:translateY(-5px);
+.fade.show{
+opacity:1;
+transform:translateY(0);
 }
 
-ul{
-line-height:2;
-}
-
-/* FOOTER */
-footer{
-text-align:center;
-padding:30px;
-background:#000;
-color:#aaa;
-}
-
-/* COPY BUTTON */
-.copy-btn{
-margin-top:10px;
-padding:10px;
-background:#8cff00;
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
-
-/* FLOATING ROACH */
+/* FLOAT ROACH */
 .roach{
 position:fixed;
 font-size:25px;
@@ -151,17 +139,42 @@ animation:float 6s infinite;
 100%{transform:translateY(0);}
 }
 
+footer{
+text-align:center;
+padding:30px;
+background:#000;
+color:#aaa;
+}
+
+ul{
+line-height:2;
+}
+
+.copy-btn{
+margin-top:10px;
+padding:10px;
+background:#8cff00;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="topbar">🚀 EARLY PHASE — BEFORE 1000 HOLDERS</div>
+<!-- LOADER -->
+<div id="loader">
+<div class="loader-logo">🪳</div>
+<p>Loading Roach Revolution...</p>
+</div>
 
+<!-- FLOAT -->
 <div class="roach" style="left:10%;top:30%">🪳</div>
 <div class="roach" style="left:80%;top:60%">🪳</div>
 
-<header>
+<header class="fade">
 
 <div class="logo">
 <img src="logo.png">
@@ -173,19 +186,17 @@ animation:float 6s infinite;
 The People's Meme. The Roach Revolution.
 </p>
 
-<h2>🪳 The Next Viral Solana Meme Coin</h2>
-
 <p>$CCP | Solana Meme Token</p>
 
-<a class="btn" href="https://pump.fun" target="_blank">🔥 BUY NOW</a>
-<a class="btn" href="https://x.com/Cockroaccoin" target="_blank">🐦 X</a>
-<a class="btn" href="https://t.me/coackroajanarapartii" target="_blank">💬 Telegram</a>
-<a class="btn" href="https://discord.gg/5dJdRhgFa" target="_blank">🎮 Discord</a>
+<a class="btn" href="https://pump.fun" target="_blank">🚀 Buy on Pump.fun</a>
+<a class="btn" href="https://x.com/Cockroaccoin" target="_blank">🐦 Follow on X</a>
+<a class="btn" href="https://t.me/coackroajanarapartii" target="_blank">💬 Join Telegram</a>
+<a class="btn" href="https://discord.gg/5dJdRhgFa" target="_blank">🎮 Join Discord</a>
 
 </header>
 
 <!-- ABOUT -->
-<section>
+<section class="fade">
 <h2>🪳 About CCP</h2>
 <div class="card">
 
@@ -207,7 +218,7 @@ is claimed with any organization.
 </section>
 
 <!-- WHY CCP -->
-<section>
+<section class="fade">
 <h2>🚀 Why CCP?</h2>
 
 <div class="grid">
@@ -242,11 +253,10 @@ A meme army powered by supporters worldwide.
 </div>
 
 </div>
-
 </section>
 
 <!-- TOKENOMICS -->
-<section>
+<section class="fade">
 <h2>💰 Tokenomics</h2>
 
 <div class="card">
@@ -274,11 +284,10 @@ A meme army powered by supporters worldwide.
 </ul>
 
 </div>
-
 </section>
 
 <!-- ROADMAP -->
-<section>
+<section class="fade">
 <h2>🗺 Roadmap</h2>
 
 <div class="grid">
@@ -313,46 +322,72 @@ A meme army powered by supporters worldwide.
 </div>
 
 </div>
-
 </section>
 
 <!-- COMMUNITY -->
-<section>
+<section class="fade">
 <h2>📢 Join The Roach Army</h2>
 
 <div class="card">
 
-<p>
-🐦 X:
-<a href="https://x.com/Cockroaccoin" target="_blank">@Cockroaccoin</a>
-</p>
-
-<p>
-💬 Telegram:
-<a href="https://t.me/coackroajanarapartii" target="_blank">Join Telegram</a>
-</p>
-
-<p>
-🎮 Discord:
-<a href="https://discord.gg/5dJdRhgFa" target="_blank">Join Discord</a>
-</p>
+<p>🐦 <a href="https://x.com/Cockroaccoin" target="_blank">@Cockroaccoin</a></p>
+<p>💬 <a href="https://t.me/coackroajanarapartii" target="_blank">Join Telegram</a></p>
+<p>🎮 <a href="https://discord.gg/5dJdRhgFa" target="_blank">Join Discord</a></p>
 
 </div>
 
 </section>
 
 <footer>
-
 <p>🪳 Cockroach Crypto Party ($CCP)</p>
 <p>A meme token created for entertainment and community culture.</p>
 <p>© 2026 CCP Community</p>
-
 </footer>
+
+<!-- SOUND -->
+<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
 
 <script>
 
+/* LOADER */
+window.onload = () => {
+setTimeout(()=>{document.getElementById("loader").style.display="none";},1500);
+};
+
+/* FADE */
+const faders=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+faders.forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-100){
+el.classList.add('show');
+}
+});
+});
+
+/* SOUND */
+document.querySelectorAll('.btn').forEach(btn=>{
+btn.addEventListener('click',()=>{
+document.getElementById('clickSound').play();
+});
+});
+
+/* ROACH CLICK */
+document.addEventListener("click",(e)=>{
+const r=document.createElement("div");
+r.innerHTML="🪳";
+r.style.position="fixed";
+r.style.left=e.clientX+"px";
+r.style.top=e.clientY+"px";
+r.style.fontSize="30px";
+document.body.appendChild(r);
+
+setTimeout(()=>{r.style.transform="translateY(-50px)";r.style.opacity="0";},10);
+setTimeout(()=>r.remove(),800);
+});
+
+/* COPY */
 function copyContract(){
-const text = document.getElementById("contract").innerText;
+const text=document.getElementById("contract").innerText;
 navigator.clipboard.writeText(text);
 alert("Contract copied!");
 }
