@@ -6,159 +6,165 @@
 
 <title>Cockroach Crypto Party 🪳 | $CCP</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Orbitron',sans-serif;
 }
 
 body{
-    background:#080808;
-    color:white;
-    overflow-x:hidden;
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+
+/* TOP BAR */
+.topbar{
+position:fixed;
+top:0;
+width:100%;
+background:#8cff00;
+color:black;
+text-align:center;
+padding:8px;
+font-weight:bold;
+z-index:999;
 }
 
 /* HEADER */
 header{
-    padding:30px;
-    text-align:center;
-    background:linear-gradient(135deg,#101010,#163300);
+padding:100px 20px 50px;
+text-align:center;
+background:linear-gradient(135deg,#000,#163300);
 }
 
-/* ✅ IMAGE LOGO */
+/* LOGO */
 .logo img{
-    width:150px;
-    border-radius:50%;
-    box-shadow:0 0 30px #8cff00;
+width:150px;
+border-radius:50%;
+box-shadow:0 0 30px #8cff00;
 }
 
-/* 🪳 FLOATING ROACHES */
-.roach{
-    position:fixed;
-    font-size:30px;
-    animation:float 6s infinite ease-in-out;
-    opacity:0.6;
-}
-
-.roach:nth-child(1){ left:10%; top:20%; animation-delay:0s;}
-.roach:nth-child(2){ left:80%; top:40%; animation-delay:2s;}
-.roach:nth-child(3){ left:50%; top:70%; animation-delay:4s;}
-
-@keyframes float{
-    0%{ transform:translateY(0px);}
-    50%{ transform:translateY(-20px);}
-    100%{ transform:translateY(0px);}
-}
-
-/* TEXT */
+/* TITLE */
 h1{
-    font-size:48px;
-    color:#8cff00;
-    text-shadow:0 0 15px #8cff00;
+font-size:48px;
+color:#8cff00;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{ text-shadow:0 0 10px #8cff00;}
+to{ text-shadow:0 0 30px #8cff00;}
 }
 
 .tagline{
-    font-size:22px;
-    margin-top:15px;
+font-size:20px;
+margin:10px 0;
 }
 
 /* BUTTONS */
 .btn{
-    display:inline-block;
-    margin:10px;
-    padding:14px 30px;
-    border-radius:30px;
-    background:#8cff00;
-    color:black;
-    text-decoration:none;
-    font-weight:bold;
-    transition:0.3s;
-    box-shadow:0 0 10px #8cff00;
+display:inline-block;
+margin:10px;
+padding:14px 28px;
+border-radius:30px;
+background:#8cff00;
+color:black;
+text-decoration:none;
+font-weight:bold;
+box-shadow:0 0 15px #8cff00;
+transition:.3s;
 }
 
 .btn:hover{
-    background:white;
-    transform:scale(1.05);
+transform:scale(1.1);
+background:white;
 }
 
 /* SECTIONS */
 section{
-    padding:50px 10%;
+padding:60px 10%;
 }
 
 h2{
-    color:#8cff00;
-    font-size:35px;
-    margin-bottom:20px;
-    text-shadow:0 0 10px #8cff00;
-}
-
-/* CARDS */
-.card{
-    background:#151515;
-    padding:25px;
-    border-radius:15px;
-    margin:15px 0;
-    border:1px solid #333;
-    box-shadow:0 0 10px rgba(140,255,0,0.2);
+color:#8cff00;
+margin-bottom:20px;
 }
 
 /* GRID */
 .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
-.token span{
-    color:#8cff00;
+/* CARD */
+.card{
+background:#111;
+padding:25px;
+border-radius:15px;
+box-shadow:0 0 15px rgba(140,255,0,0.2);
+transition:.3s;
 }
 
-.roadmap div{
-    margin:20px 0;
+.card:hover{
+transform:translateY(-5px);
+}
+
+ul{
+line-height:2;
 }
 
 /* FOOTER */
 footer{
-    text-align:center;
-    padding:30px;
-    background:#050505;
-    color:#aaa;
-}
-
-ul{
-    line-height:2;
+text-align:center;
+padding:30px;
+background:#000;
+color:#aaa;
 }
 
 /* COPY BUTTON */
 .copy-btn{
-    background:#8cff00;
-    color:black;
-    border:none;
-    padding:10px 15px;
-    border-radius:8px;
-    cursor:pointer;
-    margin-top:10px;
+margin-top:10px;
+padding:10px;
+background:#8cff00;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+/* FLOATING ROACH */
+.roach{
+position:fixed;
+font-size:25px;
+animation:float 6s infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0);}
+50%{transform:translateY(-20px);}
+100%{transform:translateY(0);}
 }
 
 </style>
-
 </head>
 
 <body>
 
-<!-- 🪳 FLOATING ROACHES -->
-<div class="roach">🪳</div>
-<div class="roach">🪳</div>
-<div class="roach">🪳</div>
+<div class="topbar">🚀 EARLY PHASE — BEFORE 1000 HOLDERS</div>
+
+<div class="roach" style="left:10%;top:30%">🪳</div>
+<div class="roach" style="left:80%;top:60%">🪳</div>
 
 <header>
 
 <div class="logo">
-<img src="logo.png" alt="Cockroach Crypto Party Logo">
+<img src="logo.png">
 </div>
 
 <h1>Cockroach Crypto Party</h1>
@@ -167,10 +173,11 @@ ul{
 The People's Meme. The Roach Revolution.
 </p>
 
+<h2>🪳 The Next Viral Solana Meme Coin</h2>
+
 <p>$CCP | Solana Meme Token</p>
 
-<!-- ✅ UPDATED BUTTONS -->
-<a class="btn" href="https://pump.fun" target="_blank">🚀 Buy</a>
+<a class="btn" href="https://pump.fun" target="_blank">🔥 BUY NOW</a>
 <a class="btn" href="https://x.com/Cockroaccoin" target="_blank">🐦 X</a>
 <a class="btn" href="https://t.me/coackroajanarapartii" target="_blank">💬 Telegram</a>
 <a class="btn" href="https://discord.gg/5dJdRhgFa" target="_blank">🎮 Discord</a>
@@ -181,21 +188,25 @@ The People's Meme. The Roach Revolution.
 <section>
 <h2>🪳 About CCP</h2>
 <div class="card">
+
 <p>
 Welcome to Cockroach Crypto Party ($CCP),
 a community-driven meme token inspired by internet culture,
 memes, and the legendary survival spirit of the cockroach.
 </p>
+
 <br>
+
 <p>
 CCP is created for entertainment, community participation,
 and crypto culture. No political affiliation or official connection
 is claimed with any organization.
 </p>
+
 </div>
 </section>
 
-<!-- WHY CCP (RESTORED) -->
+<!-- WHY CCP -->
 <section>
 <h2>🚀 Why CCP?</h2>
 
@@ -203,35 +214,45 @@ is claimed with any organization.
 
 <div class="card">
 <h3>🪳 Survival Mode</h3>
-<p>Cockroaches survived millions of years. CCP represents resilience.</p>
+<p>
+Cockroaches survived millions of years.
+CCP represents resilience through every market cycle.
+</p>
 </div>
 
 <div class="card">
 <h3>😂 Meme Power</h3>
-<p>Built around humor, creativity and community memes.</p>
+<p>
+Built around humor, creativity and community memes.
+</p>
 </div>
 
 <div class="card">
 <h3>⚡ Solana Speed</h3>
-<p>Fast transactions and low fees.</p>
+<p>
+Fast transactions and low network fees.
+</p>
 </div>
 
 <div class="card">
 <h3>🌎 Community</h3>
-<p>A meme army powered by supporters worldwide.</p>
+<p>
+A meme army powered by supporters worldwide.
+</p>
 </div>
 
 </div>
+
 </section>
 
 <!-- TOKENOMICS -->
 <section>
 <h2>💰 Tokenomics</h2>
 
-<div class="card token">
+<div class="card">
 
 <p><b>Name:</b> Cockroach Crypto Party</p>
-<p><b>Ticker:</b> <span>$CCP</span></p>
+<p><b>Ticker:</b> $CCP</p>
 <p><b>Blockchain:</b> Solana</p>
 
 <p>
@@ -253,13 +274,14 @@ is claimed with any organization.
 </ul>
 
 </div>
+
 </section>
 
-<!-- ROADMAP (FULL RESTORED) -->
+<!-- ROADMAP -->
 <section>
 <h2>🗺 Roadmap</h2>
 
-<div class="roadmap">
+<div class="grid">
 
 <div class="card">
 <h3>Phase 1 🥚 Egg Stage</h3>
@@ -291,9 +313,10 @@ is claimed with any organization.
 </div>
 
 </div>
+
 </section>
 
-<!-- COMMUNITY (RESTORED + FIXED LINKS) -->
+<!-- COMMUNITY -->
 <section>
 <h2>📢 Join The Roach Army</h2>
 
@@ -319,17 +342,21 @@ is claimed with any organization.
 </section>
 
 <footer>
+
 <p>🪳 Cockroach Crypto Party ($CCP)</p>
 <p>A meme token created for entertainment and community culture.</p>
 <p>© 2026 CCP Community</p>
+
 </footer>
 
 <script>
+
 function copyContract(){
-    const text = document.getElementById("contract").innerText;
-    navigator.clipboard.writeText(text);
-    alert("Contract copied!");
+const text = document.getElementById("contract").innerText;
+navigator.clipboard.writeText(text);
+alert("Contract copied!");
 }
+
 </script>
 
 </body>
