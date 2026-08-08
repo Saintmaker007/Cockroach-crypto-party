@@ -10,156 +10,225 @@
 
 <style>
 
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;}
-
-body{
-font-family:'Poppins',sans-serif;
-background:#050505;
-color:white;
-overflow-x:hidden;
+/* ================= GLOBAL RESET ================= */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
-/* SMOOTH SCROLL */
 html{
 scroll-behavior:smooth;
 }
 
-/* LOADER */
-#loader{
+body{
+font-family:'Poppins',sans-serif;
+background:#050505;
+color:#fff;
+overflow-x:hidden;
+line-height:1.6;
+}
+
+/* ================= BACKGROUND ================= */
+.bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:radial-gradient(circle at 30% 20%,#2a0d00,#000 70%);
+z-index:-3;
+}
+
+.stars{
 position:fixed;
 width:100%;
 height:100%;
-background:black;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:9999;
+background:url("https://www.transparenttextures.com/patterns/stardust.png");
+opacity:0.25;
+z-index:-2;
 }
 
-.loader-logo{
-font-size:60px;
-animation:spin 2s infinite linear;
-}
-
-@keyframes spin{
-100%{transform:rotate(360deg);}
-}
-
-/* HEADER */
-header{
-padding:100px 20px 80px;
-text-align:center;
-background: radial-gradient(circle at top,#163300,#000);
-position:relative;
-overflow:hidden;
-}
-
-/* MOON */
-.moon{
+/* ================= MARS ================= */
+.mars{
 position:absolute;
-right:10%;
-top:40px;
-width:120px;
-height:120px;
-background:#eee;
+right:6%;
+top:80px;
+width:200px;
+height:200px;
 border-radius:50%;
-box-shadow:0 0 40px #fff;
+background:radial-gradient(circle,#ff6a00,#b22222,#5a0a00);
+box-shadow:0 0 120px rgba(255,80,0,0.8);
+animation:spinMars 60s linear infinite;
 }
 
-/* FLYING ROACH */
+@keyframes spinMars{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+/* ================= ROACH ================= */
 .fly{
 position:absolute;
-left:-50px;
-bottom:30px;
-font-size:30px;
-animation:fly 12s linear infinite;
+left:-80px;
+bottom:40px;
+font-size:32px;
+animation:fly 16s linear infinite;
 }
 
 @keyframes fly{
-0%{left:-50px;transform:translateY(0);}
-50%{transform:translateY(-100px);}
-100%{left:110%;transform:translateY(-200px);}
+0%{left:-80px;bottom:40px;}
+40%{bottom:200px;}
+70%{bottom:280px;}
+100%{left:110%;bottom:320px;}
 }
 
-/* LOGO */
-.logo img{
-width:140px;
-border-radius:50%;
-box-shadow:0 0 25px #8cff00;
+/* ================= CURSOR MASCOT ================= */
+#roachCursor{
+position:fixed;
+font-size:20px;
+pointer-events:none;
+z-index:9999;
+transition:transform 0.08s linear;
 }
 
-/* TEXT */
-h1{
+/* ================= HEADER ================= */
+header{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+padding:40px;
+}
+
+.hero-box{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(25px);
+padding:50px;
+border-radius:25px;
+border:1px solid rgba(255,255,255,0.1);
+box-shadow:0 0 60px rgba(255,80,0,0.4);
+max-width:800px;
+}
+
+.hero-title{
 font-family:'Orbitron';
-font-size:42px;
-color:#8cff00;
-text-shadow:0 0 20px #8cff00;
+font-size:64px;
+background:linear-gradient(90deg,#ff6a00,#ffcc00);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 }
 
 .tagline{
-font-size:20px;
-margin-top:10px;
-opacity:0.9;
+margin-top:15px;
+font-size:18px;
+opacity:0.85;
 }
 
-/* BUTTON */
+/* ================= BUTTON ================= */
 .btn{
 display:inline-block;
-margin:10px;
-padding:14px 26px;
+margin:12px;
+padding:14px 30px;
 border-radius:30px;
-background:linear-gradient(45deg,#8cff00,#00ffcc);
+background:linear-gradient(45deg,#ff6a00,#ffcc00);
 color:black;
 font-weight:bold;
 text-decoration:none;
-transition:.3s;
+transition:all 0.3s ease;
 }
 
 .btn:hover{
 transform:translateY(-3px) scale(1.05);
-box-shadow:0 0 20px #8cff00;
+box-shadow:0 0 30px #ff6a00;
 }
 
-/* SECTION */
+/* ================= SECTIONS ================= */
 section{
-padding:60px 10%;
+padding:110px 12%;
+position:relative;
 }
 
-/* HEADINGS */
+/* ================= HEADINGS ================= */
 h2{
 font-family:'Orbitron';
-color:#8cff00;
-margin-bottom:20px;
+color:#ff6a00;
+margin-bottom:25px;
 }
 
-/* CARD */
+/* ================= CARD ================= */
 .card{
-background:#111;
-padding:25px;
+background:rgba(255,255,255,0.04);
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,0.08);
+padding:30px;
 border-radius:15px;
 margin-bottom:20px;
 transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-5px);
-box-shadow:0 0 25px rgba(140,255,0,0.3);
+transform:translateY(-6px);
+box-shadow:0 0 25px rgba(255,80,0,0.4);
 }
 
-/* GRID */
+/* ================= GRID ================= */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+gap:25px;
 }
 
-/* FADE ANIMATION (OPTIMIZED) */
+/* ================= TOKENOMICS ================= */
+.token-row{
+margin-bottom:12px;
+}
+
+.token-bar{
+height:12px;
+border-radius:10px;
+background:linear-gradient(to right,#ff6a00 80%,#333 80%);
+}
+
+/* ================= ROADMAP ================= */
+.timeline{
+border-left:3px solid #ff6a00;
+padding-left:25px;
+}
+
+.timeline .card{
+position:relative;
+}
+
+.timeline .card::before{
+content:"";
+position:absolute;
+left:-32px;
+top:15px;
+width:14px;
+height:14px;
+background:#ff6a00;
+border-radius:50%;
+}
+
+/* ================= TABLE ================= */
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+td,th{
+padding:12px;
+border-bottom:1px solid #333;
+}
+
+/* ================= FADE ================= */
 .fade{
 opacity:0;
-transform:translateY(30px);
-transition:0.6s ease;
+transform:translateY(40px);
+transition:0.6s;
 }
 
 .fade.show{
@@ -167,75 +236,43 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* FLOATING ROACHES (LIGHT) */
-.roach{
-position:fixed;
-font-size:22px;
-opacity:0.3;
-animation:float 6s ease-in-out infinite;
-}
-
-@keyframes float{
-50%{transform:translateY(-15px);}
-}
-
-/* COPY BTN */
-.copy-btn{
-margin-top:10px;
-padding:10px;
-background:#8cff00;
-border:none;
-border-radius:8px;
-cursor:pointer;
-}
-
-/* FOOTER */
+/* ================= FOOTER ================= */
 footer{
 text-align:center;
-padding:30px;
+padding:40px;
 background:#000;
 color:#aaa;
-font-size:14px;
 }
-
-ul{line-height:2;}
 
 </style>
 </head>
 
 <body>
 
-<!-- LOADER -->
-<div id="loader">
-<div class="loader-logo">🪳</div>
-<p>Loading Roach Revolution...</p>
-</div>
+<div class="bg"></div>
+<div class="stars"></div>
 
-<!-- FLOAT -->
-<div class="roach" style="left:10%;top:30%">🪳</div>
-<div class="roach" style="left:80%;top:60%">🪳</div>
+<div id="roachCursor">🪳</div>
 
-<header class="fade">
+<header>
 
-<div class="moon"></div>
+<div class="mars"></div>
 <div class="fly">🪳</div>
 
-<div class="logo">
-<img src="logo.png">
-</div>
+<div class="hero-box">
 
-<h1>$CCP — The Roach That Survives Everything</h1>
+<img src="logo.png" width="130">
+
+<h1 class="hero-title">$CCP</h1>
 
 <p class="tagline">
-Built for chaos. Powered by memes. Backed by the community.
+The Roach That Survives Everything — Next Stop: MARS 🪐
 </p>
 
-<p>🪳 A Solana-based meme token inspired by resilience and internet culture.</p>
+<a class="btn" href="#">🚀 Buy Now</a>
+<a class="btn" href="#">💬 Join Telegram</a>
 
-<a class="btn" href="https://pump.fun" target="_blank">🚀 Buy on Pump.fun</a>
-<a class="btn" href="https://x.com/Cockroaccoin" target="_blank">🐦 Follow on X</a>
-<a class="btn" href="https://t.me/coackroajanarapartii" target="_blank">💬 Join Telegram</a>
-<a class="btn" href="https://discord.gg/5dJdRhgFa" target="_blank">🎮 Join Discord</a>
+</div>
 
 </header>
 
@@ -245,21 +282,17 @@ Built for chaos. Powered by memes. Backed by the community.
 <div class="card">
 
 <p>
-Welcome to Cockroach Crypto Party ($CCP), a community-driven meme token inspired by internet culture and survival spirit.
+Welcome to Cockroach Crypto Party ($CCP),
+a community-driven meme token inspired by internet culture,
+memes, and the legendary survival spirit of the cockroach.
 </p>
 
 <br>
 
 <p>
-In a world of hype coins and quick rugs, CCP represents something different —
-a meme that embraces survival, chaos, and community-driven growth.
-</p>
-
-<br>
-
-<p>
-CCP is created for entertainment and community participation.
-No political affiliation or official connection is claimed.
+CCP is created for entertainment, community participation,
+and crypto culture. No political affiliation or official connection
+is claimed with any organization.
 </p>
 
 </div>
@@ -268,27 +301,26 @@ No political affiliation or official connection is claimed.
 <!-- WHY -->
 <section class="fade">
 <h2>🚀 Why CCP?</h2>
-
 <div class="grid">
 
 <div class="card">
 <h3>🪳 Survival Mode</h3>
-<p>Cockroaches survived millions of years — CCP represents resilience.</p>
+<p>Cockroaches survived millions of years.</p>
 </div>
 
 <div class="card">
 <h3>😂 Meme Power</h3>
-<p>Built around humor, creativity and viral culture.</p>
+<p>Driven by humor and culture.</p>
 </div>
 
 <div class="card">
 <h3>⚡ Solana Speed</h3>
-<p>Fast transactions and low fees.</p>
+<p>Fast + low fees.</p>
 </div>
 
 <div class="card">
 <h3>🌎 Community</h3>
-<p>A global meme army powered by supporters.</p>
+<p>Global army.</p>
 </div>
 
 </div>
@@ -299,79 +331,50 @@ No political affiliation or official connection is claimed.
 <h2>💰 Tokenomics</h2>
 
 <div class="card">
-
-<p>$CCP is designed with a simple and transparent structure. No hidden mechanics — just meme energy.</p>
-
-<p><b>Name:</b> Cockroach Crypto Party</p>
-<p><b>Ticker:</b> $CCP</p>
-<p><b>Blockchain:</b> Solana</p>
-
-<p><b>Contract Address:</b> <span id="contract">COMING_SOON</span></p>
-<button class="copy-btn" onclick="copyContract()">Copy Contract</button>
-
 <p><b>Total Supply:</b> 1,000,000,000 CCP</p>
 
-<ul>
-<li>💧 Liquidity: 80%</li>
-<li>🌎 Community: 10%</li>
-<li>📢 Marketing: 5%</li>
-<li>🛠 Development: 5%</li>
-</ul>
+<div class="token-row">Liquidity 80%</div>
+<div class="token-bar"></div>
 
-</div>
-</section>
-
-<!-- HOW TO BUY -->
-<section class="fade">
-<h2>🛒 How to Buy $CCP</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>1️⃣ Get SOL</h3>
-<p>Buy SOL and send to your wallet.</p>
+<div>Community 10%</div>
+<div>Marketing 5%</div>
+<div>Development 5%</div>
 </div>
 
-<div class="card">
-<h3>2️⃣ Connect Wallet</h3>
-<p>Use Phantom wallet.</p>
-</div>
-
-<div class="card">
-<h3>3️⃣ Swap</h3>
-<p>Swap SOL for CCP on Pump.fun.</p>
-</div>
-
-<div class="card">
-<h3>4️⃣ Join</h3>
-<p>Stay connected with the community.</p>
-</div>
-
-</div>
 </section>
 
 <!-- ROADMAP -->
 <section class="fade">
 <h2>🗺 Roadmap</h2>
-
-<div class="grid">
-
-<div class="card">
-<h3>Phase 1 🥚</h3>
-<ul><li>Launch</li><li>Website</li><li>Memes</li></ul>
-</div>
+<div class="timeline">
 
 <div class="card">
-<h3>Phase 2 🪳</h3>
-<ul><li>Growth</li><li>Marketing</li></ul>
+<h3>Phase 1</h3>
+<p>Launch, branding, memes</p>
 </div>
 
 <div class="card">
-<h3>Phase 3 👑</h3>
-<ul><li>NFT</li><li>Expansion</li></ul>
+<h3>Phase 2</h3>
+<p>Growth, marketing</p>
+</div>
+
+<div class="card">
+<h3>Phase 3</h3>
+<p>Expansion, NFTs</p>
 </div>
 
 </div>
+</section>
+
+<!-- LEADERBOARD -->
+<section class="fade">
+<h2>🏆 Leaderboard</h2>
+<table>
+<tr><th>User</th><th>Points</th></tr>
+<tr><td>RoachKing</td><td>1200</td></tr>
+<tr><td>MemeLord</td><td>900</td></tr>
+<tr><td>HolderX</td><td>600</td></tr>
+</table>
 </section>
 
 <!-- DISCLAIMER -->
@@ -379,49 +382,34 @@ No political affiliation or official connection is claimed.
 <h2>⚠️ Disclaimer</h2>
 <div class="card">
 <p>
-$CCP is a meme token for entertainment only. No financial return is promised.
-Cryptocurrency is highly risky. Always do your own research.
+$CCP is a meme token for entertainment purposes only.
+Cryptocurrency investments are risky. DYOR.
 </p>
-</div>
-</section>
-
-<!-- COMMUNITY -->
-<section class="fade">
-<h2>📢 Join The Roach Army</h2>
-<div class="card">
-<p>🐦 <a href="https://x.com/Cockroaccoin" target="_blank">@Cockroaccoin</a></p>
-<p>💬 <a href="https://t.me/coackroajanarapartii" target="_blank">Telegram</a></p>
-<p>🎮 <a href="https://discord.gg/5dJdRhgFa" target="_blank">Discord</a></p>
 </div>
 </section>
 
 <footer>
 <p>🪳 Cockroach Crypto Party ($CCP)</p>
-<p>A meme token created for entertainment and community culture.</p>
 <p>© 2026 CCP Community</p>
 </footer>
 
 <script>
 
-/* LOADER */
-window.onload = () => {
-setTimeout(()=>document.getElementById("loader").style.display="none",1000);
-};
-
-/* FADE OPTIMIZED */
-const obs=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting){e.target.classList.add("show");}
-});
+/* CURSOR */
+document.addEventListener("mousemove",e=>{
+roachCursor.style.left=e.clientX+"px";
+roachCursor.style.top=e.clientY+"px";
 });
 
-document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
-
-/* COPY */
-function copyContract(){
-navigator.clipboard.writeText(document.getElementById("contract").innerText);
-alert("Copied!");
+/* FADE */
+const obs=new IntersectionObserver(e=>{
+e.forEach(el=>{
+if(el.isIntersecting){
+el.target.classList.add("show");
 }
+});
+});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
 
 </script>
 
