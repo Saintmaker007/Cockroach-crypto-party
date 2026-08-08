@@ -20,6 +20,11 @@ color:white;
 overflow-x:hidden;
 }
 
+/* SMOOTH SCROLL */
+html{
+scroll-behavior:smooth;
+}
+
 /* LOADER */
 #loader{
 position:fixed;
@@ -39,26 +44,56 @@ animation:spin 2s infinite linear;
 }
 
 @keyframes spin{
-0%{transform:rotate(0deg);}
 100%{transform:rotate(360deg);}
 }
 
 /* HEADER */
 header{
-padding:100px 20px 50px;
+padding:100px 20px 80px;
 text-align:center;
-background:linear-gradient(135deg,#000,#163300);
+background: radial-gradient(circle at top,#163300,#000);
+position:relative;
+overflow:hidden;
 }
 
-.logo img{
-width:150px;
+/* MOON */
+.moon{
+position:absolute;
+right:10%;
+top:40px;
+width:120px;
+height:120px;
+background:#eee;
 border-radius:50%;
-box-shadow:0 0 30px #8cff00;
+box-shadow:0 0 40px #fff;
 }
 
+/* FLYING ROACH */
+.fly{
+position:absolute;
+left:-50px;
+bottom:30px;
+font-size:30px;
+animation:fly 12s linear infinite;
+}
+
+@keyframes fly{
+0%{left:-50px;transform:translateY(0);}
+50%{transform:translateY(-100px);}
+100%{left:110%;transform:translateY(-200px);}
+}
+
+/* LOGO */
+.logo img{
+width:140px;
+border-radius:50%;
+box-shadow:0 0 25px #8cff00;
+}
+
+/* TEXT */
 h1{
-font-family:'Orbitron',sans-serif;
-font-size:48px;
+font-family:'Orbitron';
+font-size:42px;
 color:#8cff00;
 text-shadow:0 0 20px #8cff00;
 }
@@ -66,25 +101,25 @@ text-shadow:0 0 20px #8cff00;
 .tagline{
 font-size:20px;
 margin-top:10px;
+opacity:0.9;
 }
 
 /* BUTTON */
 .btn{
 display:inline-block;
 margin:10px;
-padding:14px 28px;
+padding:14px 26px;
 border-radius:30px;
 background:linear-gradient(45deg,#8cff00,#00ffcc);
 color:black;
 font-weight:bold;
 text-decoration:none;
 transition:.3s;
-box-shadow:0 0 20px rgba(140,255,0,0.6);
 }
 
 .btn:hover{
-transform:scale(1.1);
-box-shadow:0 0 30px #8cff00;
+transform:translateY(-3px) scale(1.05);
+box-shadow:0 0 20px #8cff00;
 }
 
 /* SECTION */
@@ -92,6 +127,7 @@ section{
 padding:60px 10%;
 }
 
+/* HEADINGS */
 h2{
 font-family:'Orbitron';
 color:#8cff00;
@@ -103,8 +139,13 @@ margin-bottom:20px;
 background:#111;
 padding:25px;
 border-radius:15px;
-box-shadow:0 0 15px rgba(140,255,0,0.2);
 margin-bottom:20px;
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 0 25px rgba(140,255,0,0.3);
 }
 
 /* GRID */
@@ -114,11 +155,11 @@ grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
 gap:20px;
 }
 
-/* FADE */
+/* FADE ANIMATION (OPTIMIZED) */
 .fade{
 opacity:0;
-transform:translateY(40px);
-transition:1s;
+transform:translateY(30px);
+transition:0.6s ease;
 }
 
 .fade.show{
@@ -126,30 +167,19 @@ opacity:1;
 transform:translateY(0);
 }
 
-/* FLOAT ROACH */
+/* FLOATING ROACHES (LIGHT) */
 .roach{
 position:fixed;
-font-size:25px;
-animation:float 6s infinite;
+font-size:22px;
+opacity:0.3;
+animation:float 6s ease-in-out infinite;
 }
 
 @keyframes float{
-0%{transform:translateY(0);}
-50%{transform:translateY(-20px);}
-100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
 }
 
-footer{
-text-align:center;
-padding:30px;
-background:#000;
-color:#aaa;
-}
-
-ul{
-line-height:2;
-}
-
+/* COPY BTN */
 .copy-btn{
 margin-top:10px;
 padding:10px;
@@ -158,6 +188,17 @@ border:none;
 border-radius:8px;
 cursor:pointer;
 }
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:30px;
+background:#000;
+color:#aaa;
+font-size:14px;
+}
+
+ul{line-height:2;}
 
 </style>
 </head>
@@ -176,17 +217,20 @@ cursor:pointer;
 
 <header class="fade">
 
+<div class="moon"></div>
+<div class="fly">🪳</div>
+
 <div class="logo">
 <img src="logo.png">
 </div>
 
-<h1>Cockroach Crypto Party</h1>
+<h1>$CCP — The Roach That Survives Everything</h1>
 
 <p class="tagline">
-The People's Meme. The Roach Revolution.
+Built for chaos. Powered by memes. Backed by the community.
 </p>
 
-<p>$CCP | Solana Meme Token</p>
+<p>🪳 A Solana-based meme token inspired by resilience and internet culture.</p>
 
 <a class="btn" href="https://pump.fun" target="_blank">🚀 Buy on Pump.fun</a>
 <a class="btn" href="https://x.com/Cockroaccoin" target="_blank">🐦 Follow on X</a>
@@ -201,23 +245,27 @@ The People's Meme. The Roach Revolution.
 <div class="card">
 
 <p>
-Welcome to Cockroach Crypto Party ($CCP),
-a community-driven meme token inspired by internet culture,
-memes, and the legendary survival spirit of the cockroach.
+Welcome to Cockroach Crypto Party ($CCP), a community-driven meme token inspired by internet culture and survival spirit.
 </p>
 
 <br>
 
 <p>
-CCP is created for entertainment, community participation,
-and crypto culture. No political affiliation or official connection
-is claimed with any organization.
+In a world of hype coins and quick rugs, CCP represents something different —
+a meme that embraces survival, chaos, and community-driven growth.
+</p>
+
+<br>
+
+<p>
+CCP is created for entertainment and community participation.
+No political affiliation or official connection is claimed.
 </p>
 
 </div>
 </section>
 
-<!-- WHY CCP -->
+<!-- WHY -->
 <section class="fade">
 <h2>🚀 Why CCP?</h2>
 
@@ -225,31 +273,22 @@ is claimed with any organization.
 
 <div class="card">
 <h3>🪳 Survival Mode</h3>
-<p>
-Cockroaches survived millions of years.
-CCP represents resilience through every market cycle.
-</p>
+<p>Cockroaches survived millions of years — CCP represents resilience.</p>
 </div>
 
 <div class="card">
 <h3>😂 Meme Power</h3>
-<p>
-Built around humor, creativity and community memes.
-</p>
+<p>Built around humor, creativity and viral culture.</p>
 </div>
 
 <div class="card">
 <h3>⚡ Solana Speed</h3>
-<p>
-Fast transactions and low network fees.
-</p>
+<p>Fast transactions and low fees.</p>
 </div>
 
 <div class="card">
 <h3>🌎 Community</h3>
-<p>
-A meme army powered by supporters worldwide.
-</p>
+<p>A global meme army powered by supporters.</p>
 </div>
 
 </div>
@@ -261,20 +300,16 @@ A meme army powered by supporters worldwide.
 
 <div class="card">
 
+<p>$CCP is designed with a simple and transparent structure. No hidden mechanics — just meme energy.</p>
+
 <p><b>Name:</b> Cockroach Crypto Party</p>
 <p><b>Ticker:</b> $CCP</p>
 <p><b>Blockchain:</b> Solana</p>
 
-<p>
-<b>Contract Address:</b>
-<span id="contract">COMING_SOON</span>
-</p>
-
+<p><b>Contract Address:</b> <span id="contract">COMING_SOON</span></p>
 <button class="copy-btn" onclick="copyContract()">Copy Contract</button>
 
 <p><b>Total Supply:</b> 1,000,000,000 CCP</p>
-
-<br>
 
 <ul>
 <li>💧 Liquidity: 80%</li>
@@ -286,6 +321,35 @@ A meme army powered by supporters worldwide.
 </div>
 </section>
 
+<!-- HOW TO BUY -->
+<section class="fade">
+<h2>🛒 How to Buy $CCP</h2>
+
+<div class="grid">
+
+<div class="card">
+<h3>1️⃣ Get SOL</h3>
+<p>Buy SOL and send to your wallet.</p>
+</div>
+
+<div class="card">
+<h3>2️⃣ Connect Wallet</h3>
+<p>Use Phantom wallet.</p>
+</div>
+
+<div class="card">
+<h3>3️⃣ Swap</h3>
+<p>Swap SOL for CCP on Pump.fun.</p>
+</div>
+
+<div class="card">
+<h3>4️⃣ Join</h3>
+<p>Stay connected with the community.</p>
+</div>
+
+</div>
+</section>
+
 <!-- ROADMAP -->
 <section class="fade">
 <h2>🗺 Roadmap</h2>
@@ -293,49 +357,42 @@ A meme army powered by supporters worldwide.
 <div class="grid">
 
 <div class="card">
-<h3>Phase 1 🥚 Egg Stage</h3>
-<ul>
-<li>Brand creation</li>
-<li>Website launch</li>
-<li>Social media setup</li>
-<li>Meme campaign</li>
-</ul>
+<h3>Phase 1 🥚</h3>
+<ul><li>Launch</li><li>Website</li><li>Memes</li></ul>
 </div>
 
 <div class="card">
-<h3>Phase 2 🪳 Baby Roach</h3>
-<ul>
-<li>Solana token launch</li>
-<li>Community growth</li>
-<li>Marketing campaigns</li>
-<li>Exchange applications</li>
-</ul>
+<h3>Phase 2 🪳</h3>
+<ul><li>Growth</li><li>Marketing</li></ul>
 </div>
 
 <div class="card">
-<h3>Phase 3 👑 Mega Roach</h3>
-<ul>
-<li>NFT collection</li>
-<li>Global meme expansion</li>
-<li>Community events</li>
-</ul>
+<h3>Phase 3 👑</h3>
+<ul><li>NFT</li><li>Expansion</li></ul>
 </div>
 
+</div>
+</section>
+
+<!-- DISCLAIMER -->
+<section class="fade">
+<h2>⚠️ Disclaimer</h2>
+<div class="card">
+<p>
+$CCP is a meme token for entertainment only. No financial return is promised.
+Cryptocurrency is highly risky. Always do your own research.
+</p>
 </div>
 </section>
 
 <!-- COMMUNITY -->
 <section class="fade">
 <h2>📢 Join The Roach Army</h2>
-
 <div class="card">
-
 <p>🐦 <a href="https://x.com/Cockroaccoin" target="_blank">@Cockroaccoin</a></p>
-<p>💬 <a href="https://t.me/coackroajanarapartii" target="_blank">Join Telegram</a></p>
-<p>🎮 <a href="https://discord.gg/5dJdRhgFa" target="_blank">Join Discord</a></p>
-
+<p>💬 <a href="https://t.me/coackroajanarapartii" target="_blank">Telegram</a></p>
+<p>🎮 <a href="https://discord.gg/5dJdRhgFa" target="_blank">Discord</a></p>
 </div>
-
 </section>
 
 <footer>
@@ -344,52 +401,26 @@ A meme army powered by supporters worldwide.
 <p>© 2026 CCP Community</p>
 </footer>
 
-<!-- SOUND -->
-<audio id="clickSound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3"></audio>
-
 <script>
 
 /* LOADER */
 window.onload = () => {
-setTimeout(()=>{document.getElementById("loader").style.display="none";},1500);
+setTimeout(()=>document.getElementById("loader").style.display="none",1000);
 };
 
-/* FADE */
-const faders=document.querySelectorAll('.fade');
-window.addEventListener('scroll',()=>{
-faders.forEach(el=>{
-if(el.getBoundingClientRect().top<window.innerHeight-100){
-el.classList.add('show');
-}
+/* FADE OPTIMIZED */
+const obs=new IntersectionObserver(entries=>{
+entries.forEach(e=>{
+if(e.isIntersecting){e.target.classList.add("show");}
 });
 });
 
-/* SOUND */
-document.querySelectorAll('.btn').forEach(btn=>{
-btn.addEventListener('click',()=>{
-document.getElementById('clickSound').play();
-});
-});
-
-/* ROACH CLICK */
-document.addEventListener("click",(e)=>{
-const r=document.createElement("div");
-r.innerHTML="🪳";
-r.style.position="fixed";
-r.style.left=e.clientX+"px";
-r.style.top=e.clientY+"px";
-r.style.fontSize="30px";
-document.body.appendChild(r);
-
-setTimeout(()=>{r.style.transform="translateY(-50px)";r.style.opacity="0";},10);
-setTimeout(()=>r.remove(),800);
-});
+document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
 
 /* COPY */
 function copyContract(){
-const text=document.getElementById("contract").innerText;
-navigator.clipboard.writeText(text);
-alert("Contract copied!");
+navigator.clipboard.writeText(document.getElementById("contract").innerText);
+alert("Copied!");
 }
 
 </script>
