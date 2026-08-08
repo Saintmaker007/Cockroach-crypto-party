@@ -7,84 +7,109 @@
 
 <style>
 
-/* ===== GLOBAL ===== */
-*{margin:0;padding:0;box-sizing:border-box;font-family:sans-serif}
-body{background:#000;color:#fff;overflow-x:hidden}
+/* ===== RESET ===== */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
 
-/* ===== GLOW BG ===== */
+/* ===== BODY ===== */
+body{
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+
+/* GLOW BG */
 body::before{
 content:"";
 position:fixed;
-width:900px;height:900px;
-background:radial-gradient(circle,#8cff00 0%, transparent 60%);
-filter:blur(160px);
-opacity:0.2;
+width:900px;
+height:900px;
+background:radial-gradient(circle,#8cff00 0%,transparent 60%);
+filter:blur(150px);
+opacity:.15;
 z-index:-1;
 }
 
 /* ===== HEADER ===== */
 header{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+padding:100px 20px;
 text-align:center;
+background:linear-gradient(135deg,#0a0a0a,#1a3300);
 }
 
-.logo{font-size:120px;animation:float 3s infinite}
+.logo{
+font-size:110px;
+animation:float 3s infinite;
+}
+
 @keyframes float{
 0%,100%{transform:translateY(0)}
-50%{transform:translateY(-25px)}
+50%{transform:translateY(-20px)}
 }
 
-h1{font-size:70px;color:#8cff00;text-shadow:0 0 40px #8cff00}
+h1{
+font-size:55px;
+color:#8cff00;
+text-shadow:0 0 25px #8cff00;
+}
 
-.tagline{opacity:.8;margin-top:10px;font-size:22px}
+.tagline{font-size:22px;margin-top:15px;opacity:.9}
 
-/* ===== BUTTON ===== */
+/* BUTTON */
 .btn{
-margin:15px;
-padding:16px 40px;
-border-radius:50px;
+display:inline-block;
+margin:20px 10px;
+padding:15px 35px;
+border-radius:40px;
 background:#8cff00;
 color:black;
 font-weight:bold;
 text-decoration:none;
 transition:.3s;
 }
-
 .btn:hover{
-transform:scale(1.2);
-box-shadow:0 0 40px #8cff00;
+transform:scale(1.1);
+box-shadow:0 0 25px #8cff00;
 }
 
-/* ===== SECTIONS ===== */
-section{padding:80px 10%}
-h2{color:#8cff00;font-size:42px;margin-bottom:20px}
+/* ===== SECTION ===== */
+section{padding:70px 10%}
+h2{color:#8cff00;font-size:38px;margin-bottom:20px}
 
-/* ===== CARD ===== */
+/* CARD */
 .card{
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.1);
+background:rgba(255,255,255,.05);
+border:1px solid rgba(255,255,255,.1);
 padding:25px;
-border-radius:20px;
+border-radius:15px;
+margin:15px 0;
 backdrop-filter:blur(10px);
 transition:.3s;
 }
-.card:hover{transform:scale(1.05);box-shadow:0 0 40px rgba(140,255,0,0.3)}
+.card:hover{
+transform:translateY(-5px);
+box-shadow:0 0 20px rgba(140,255,0,.3);
+}
 
-/* ===== GRID ===== */
+/* GRID */
 .grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:25px;
+gap:20px;
 }
 
-/* ===== ROACH SWARM ===== */
+/* SOCIAL ICONS */
+.social a{
+display:inline-block;
+margin:10px;
+font-size:22px;
+transition:.3s;
+}
+.social a:hover{transform:scale(1.3);color:#8cff00}
+
+/* ROACH ANIMATION */
 .roach{
 position:fixed;
-font-size:30px;
+font-size:35px;
 animation:fly linear infinite;
 }
 @keyframes fly{
@@ -92,7 +117,7 @@ from{transform:translate(-10vw,100vh)}
 to{transform:translate(110vw,-100vh)}
 }
 
-/* ===== POPUP ===== */
+/* POPUP */
 .popup{
 position:fixed;
 bottom:20px;
@@ -104,13 +129,13 @@ border-radius:10px;
 display:none;
 }
 
-/* ===== GAME ===== */
+/* GAME */
 #game{
-background:#111;
 height:200px;
+background:#111;
+border-radius:15px;
 position:relative;
 overflow:hidden;
-border-radius:15px;
 }
 .roachGame{
 position:absolute;
@@ -118,28 +143,7 @@ font-size:30px;
 cursor:pointer;
 }
 
-/* ===== SOUND BUTTON ===== */
-.soundToggle{
-position:fixed;
-top:20px;
-right:20px;
-background:#8cff00;
-padding:10px;
-border-radius:50%;
-cursor:pointer;
-}
-
-/* ===== SOCIAL ICONS ===== */
-.social a{
-margin:10px;
-font-size:22px;
-text-decoration:none;
-display:inline-block;
-transition:.3s;
-}
-.social a:hover{transform:scale(1.3);color:#8cff00}
-
-/* ===== FOOTER ===== */
+/* FOOTER */
 footer{text-align:center;padding:40px;color:#aaa}
 
 </style>
@@ -147,50 +151,92 @@ footer{text-align:center;padding:40px;color:#aaa}
 
 <body>
 
-<div class="soundToggle" onclick="toggleSound()">🔊</div>
-
 <header>
 <div class="logo">🪳</div>
 <h1>Cockroach Crypto Party</h1>
-<p class="tagline">The coin that survives EVERYTHING.</p>
+<p class="tagline">The People's Meme. The Roach Revolution.</p>
+<p>$CCP | Solana Meme Token</p>
 
-<a class="btn" href="https://pump.fun" target="_blank">BUY NOW</a>
-<a class="btn" href="https://t.me/coackroajanarapartii" target="_blank">JOIN TELEGRAM</a>
+<a class="btn" href="https://pump.fun" target="_blank">💰 Buy on Pump.fun</a>
+<a class="btn" href="https://t.me/coackroajanarapartii" target="_blank">💬 Join Telegram</a>
 </header>
 
+<!-- ABOUT -->
 <section>
 <h2>🪳 About CCP</h2>
 <div class="card">
-<p>Your original content preserved here exactly.</p>
+<p>
+Welcome to Cockroach Crypto Party ($CCP),
+a community-driven meme token inspired by internet culture,
+memes, and the legendary survival spirit of the cockroach.
+</p>
+<br>
+<p>
+CCP is created for entertainment, community participation,
+and crypto culture. No political affiliation or official connection
+is claimed with any organization.
+</p>
 </div>
 </section>
 
+<!-- WHY -->
 <section>
 <h2>🚀 Why CCP?</h2>
 <div class="grid">
-<div class="card">🪳 Survival</div>
-<div class="card">😂 Meme Power</div>
-<div class="card">⚡ Solana Speed</div>
-<div class="card">🌎 Community</div>
+<div class="card"><h3>🪳 Survival Mode</h3><p>Cockroaches survived millions of years.</p></div>
+<div class="card"><h3>😂 Meme Power</h3><p>Built around humor and creativity.</p></div>
+<div class="card"><h3>⚡ Solana Speed</h3><p>Fast and cheap transactions.</p></div>
+<div class="card"><h3>🌎 Community</h3><p>Global meme army.</p></div>
 </div>
 </section>
 
+<!-- TOKENOMICS -->
+<section>
+<h2>💰 Tokenomics</h2>
+<div class="card">
+<p><b>Name:</b> Cockroach Crypto Party</p>
+<p><b>Ticker:</b> $CCP</p>
+<p><b>Blockchain:</b> Solana</p>
+<p><b>Contract Address:</b> Coming Soon</p>
+<p><b>Total Supply:</b> 1,000,000,000 CCP</p>
+<ul>
+<li>💧 Liquidity: 80%</li>
+<li>🌎 Community: 10%</li>
+<li>📢 Marketing: 5%</li>
+<li>🛠 Development: 5%</li>
+</ul>
+</div>
+</section>
+
+<!-- ROADMAP -->
+<section>
+<h2>🗺 Roadmap</h2>
+<div class="grid">
+<div class="card"><h3>Phase 1 🥚</h3><ul><li>Brand</li><li>Website</li><li>Socials</li></ul></div>
+<div class="card"><h3>Phase 2 🪳</h3><ul><li>Launch</li><li>Growth</li><li>Marketing</li></ul></div>
+<div class="card"><h3>Phase 3 👑</h3><ul><li>NFT</li><li>Expansion</li></ul></div>
+</div>
+</section>
+
+<!-- CHART -->
 <section>
 <h2>📈 Live Chart</h2>
 <div class="card">
-<p>Embed your DEX chart here (Dexscreener iframe)</p>
+<iframe src="https://dexscreener.com" width="100%" height="400"></iframe>
 </div>
 </section>
 
+<!-- GAME -->
 <section>
-<h2>🎮 Mini Game</h2>
+<h2>🎮 Roach Smash Game</h2>
 <div id="game"></div>
 </section>
 
+<!-- SOCIAL -->
 <section>
-<h2>📢 Join Community</h2>
+<h2>📢 Join The Roach Army</h2>
 <div class="card social">
-<a href="https://x.com/Cockroaccoin" target="_blank">🐦 Twitter</a>
+<a href="https://x.com/Cockroaccoin" target="_blank">🐦 X</a>
 <a href="https://t.me/coackroajanarapartii" target="_blank">💬 Telegram</a>
 <a href="https://discord.gg/5dJdRhgFa" target="_blank">🎮 Discord</a>
 <a href="https://pump.fun" target="_blank">💰 Buy</a>
@@ -198,34 +244,34 @@ footer{text-align:center;padding:40px;color:#aaa}
 </section>
 
 <footer>
-<p>🪳 CCP 2026</p>
+<p>🪳 Cockroach Crypto Party ($CCP)</p>
+<p>© 2026 CCP Community</p>
 </footer>
 
 <div class="popup" id="popup"></div>
 
 <script>
 
-/* ===== ROACH SWARM ===== */
-for(let i=0;i<8;i++){
+/* ROACH SWARM */
+for(let i=0;i<6;i++){
 let r=document.createElement("div");
 r.innerText="🪳";
 r.className="roach";
 r.style.left=Math.random()*100+"vw";
-r.style.animationDuration=(8+Math.random()*6)+"s";
+r.style.animationDuration=(8+Math.random()*5)+"s";
 document.body.appendChild(r);
 }
 
-/* ===== FAKE BUYS ===== */
-const names=["Whale","Alpha","Trader","MoonBoy","Degenerate"];
+/* FAKE BUYS */
+const names=["Whale","Alpha","Trader"];
 setInterval(()=>{
 let popup=document.getElementById("popup");
-let name=names[Math.floor(Math.random()*names.length)];
-popup.innerText=name+" bought "+(Math.random()*3).toFixed(2)+" SOL 🚀";
+popup.innerText=names[Math.floor(Math.random()*names.length)]+" bought "+(Math.random()*3).toFixed(2)+" SOL 🚀";
 popup.style.display="block";
 setTimeout(()=>popup.style.display="none",3000);
 },4000);
 
-/* ===== MINI GAME ===== */
+/* GAME */
 const game=document.getElementById("game");
 setInterval(()=>{
 let r=document.createElement("div");
@@ -233,23 +279,10 @@ r.innerText="🪳";
 r.className="roachGame";
 r.style.left=Math.random()*90+"%";
 r.style.top=Math.random()*80+"%";
-r.onclick=()=>{r.remove();if(soundOn)clickSound.play();}
+r.onclick=()=>r.remove();
 game.appendChild(r);
 setTimeout(()=>r.remove(),3000);
 },1000);
-
-/* ===== SOUND ===== */
-let soundOn=false;
-let clickSound=new Audio("https://actions.google.com/sounds/v1/cartoon/pop.ogg");
-
-function toggleSound(){
-soundOn=!soundOn;
-}
-
-/* ===== VIBRATION ===== */
-document.addEventListener("click",()=>{
-if(navigator.vibrate) navigator.vibrate(20);
-});
 
 </script>
 
