@@ -3,203 +3,171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cockroach Crypto Party 🪳 | $CCP</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+<title>Cockroach Crypto Party 🪳 | $CCP</title>
 
 <style>
 
-/* RESET */
-*{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;}
+/* ===== RESET ===== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
 
+/* ===== BODY ===== */
 body{
-font-family:'Poppins',sans-serif;
-background:#050505;
-color:white;
-overflow-x:hidden;
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
 }
 
-/* PARALLAX BACKGROUND */
-.parallax{
-position:fixed;
-top:0;left:0;
-width:100%;
-height:100%;
-background:radial-gradient(circle at 20% 20%,#1a3300,#000 70%);
-z-index:-2;
+/* ===== GLOW BACKGROUND ===== */
+body::before{
+    content:"";
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:radial-gradient(circle,#8cff00 0%, transparent 70%);
+    filter:blur(120px);
+    top:-200px;
+    left:-200px;
+    opacity:0.2;
+    z-index:-1;
 }
 
-/* STAR FIELD */
-.stars{
-position:fixed;
-width:100%;
-height:100%;
-z-index:-1;
-background:url("https://www.transparenttextures.com/patterns/stardust.png");
-opacity:0.3;
-}
-
-/* MOON (FIXED CLEAN) */
-.moon{
-position:absolute;
-right:8%;
-top:80px;
-width:160px;
-height:160px;
-background:radial-gradient(circle,#fff,#ddd,#aaa);
-border-radius:50%;
-box-shadow:0 0 80px rgba(255,255,255,0.8);
-}
-
-/* ROACH FLY TO MOON */
-.fly{
-position:absolute;
-left:-80px;
-bottom:40px;
-font-size:32px;
-animation:flyMoon 15s linear infinite;
-}
-
-@keyframes flyMoon{
-0%{left:-80px;bottom:20px;}
-50%{bottom:200px;}
-100%{left:100%;bottom:300px;}
-}
-
-/* CURSOR ROACH */
-#cursorRoach{
-position:fixed;
-font-size:22px;
-pointer-events:none;
-transition:transform 0.1s linear;
-z-index:999;
-}
-
-/* HERO */
+/* ===== HEADER ===== */
 header{
-min-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-position:relative;
+    padding:80px 20px;
+    text-align:center;
+    background:linear-gradient(135deg,#0a0a0a,#0f1f00);
 }
 
-/* GLASS BOX */
-.hero-box{
-backdrop-filter: blur(20px);
-background: rgba(255,255,255,0.05);
-padding:40px;
-border-radius:20px;
-border:1px solid rgba(255,255,255,0.1);
-box-shadow:0 0 50px rgba(140,255,0,0.2);
+/* LOGO FLOAT */
+.logo{
+    font-size:90px;
+    animation:float 3s ease-in-out infinite;
 }
 
-/* TITLE */
-.hero-title{
-font-family:'Orbitron';
-font-size:55px;
-background:linear-gradient(90deg,#8cff00,#00ffcc);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
+@keyframes float{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+}
+
+/* TITLES */
+h1{
+    font-size:50px;
+    color:#8cff00;
+    text-shadow:0 0 20px #8cff00;
+}
+
+.tagline{
+    font-size:22px;
+    margin-top:15px;
+    opacity:0.9;
 }
 
 /* BUTTON */
 .btn{
-display:inline-block;
-margin:10px;
-padding:14px 26px;
-border-radius:30px;
-background:linear-gradient(45deg,#8cff00,#00ffcc);
-color:black;
-font-weight:bold;
-text-decoration:none;
-transition:0.25s;
+    display:inline-block;
+    margin:20px 10px;
+    padding:14px 30px;
+    border-radius:30px;
+    background:#8cff00;
+    color:black;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
 }
 
 .btn:hover{
-transform:scale(1.08);
-box-shadow:0 0 20px #8cff00;
+    transform:scale(1.1);
+    box-shadow:0 0 20px #8cff00;
 }
 
-/* SECTIONS */
+/* ===== SECTIONS ===== */
 section{
-padding:100px 12%;
-position:relative;
+    padding:70px 10%;
 }
 
-/* CARDS */
+h2{
+    color:#8cff00;
+    font-size:35px;
+    margin-bottom:20px;
+}
+
+/* ===== CARD ===== */
 .card{
-background: rgba(255,255,255,0.04);
-backdrop-filter: blur(12px);
-border:1px solid rgba(255,255,255,0.08);
-padding:25px;
-border-radius:15px;
-transition:0.3s;
+    background:rgba(255,255,255,0.05);
+    padding:25px;
+    border-radius:15px;
+    margin:15px 0;
+    border:1px solid rgba(255,255,255,0.1);
+    backdrop-filter:blur(10px);
+    transition:0.3s;
 }
 
 .card:hover{
-transform:translateY(-6px);
-box-shadow:0 0 30px rgba(140,255,0,0.3);
+    transform:translateY(-5px);
+    box-shadow:0 0 20px rgba(140,255,0,0.3);
 }
 
 /* GRID */
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
 }
 
-/* HEADINGS */
-h2{
-font-family:'Orbitron';
-color:#8cff00;
-margin-bottom:20px;
+/* TOKEN */
+.token span{
+    color:#8cff00;
 }
 
-/* FADE */
-.fade{
-opacity:0;
-transform:translateY(40px);
-transition:0.6s ease;
+/* ROADMAP */
+.roadmap div{
+    margin:20px 0;
 }
 
-.fade.show{
-opacity:1;
-transform:translateY(0);
-}
-
-/* PRICE WIDGET */
-.price-box{
-text-align:center;
-font-size:22px;
-padding:20px;
-border-radius:15px;
-background:rgba(0,255,100,0.1);
-box-shadow:0 0 20px rgba(0,255,100,0.3);
-}
-
-/* SOCIAL PROOF */
-.proof{
-display:flex;
-justify-content:space-around;
-flex-wrap:wrap;
-text-align:center;
-}
-
-.proof div{
-margin:20px;
-font-size:20px;
+/* LINKS */
+a{
+    color:#8cff00;
 }
 
 /* FOOTER */
 footer{
-text-align:center;
-padding:40px;
-background:#000;
-color:#aaa;
+    text-align:center;
+    padding:30px;
+    background:#030303;
+    color:#aaa;
+}
+
+/* ===== FLYING ROACH ===== */
+.roach-fly{
+    position:fixed;
+    font-size:30px;
+    animation:fly 15s linear infinite;
+    top:80%;
+    left:-50px;
+}
+
+@keyframes fly{
+    0%{transform:translate(0,0);}
+    50%{transform:translate(50vw,-50vh);}
+    100%{transform:translate(110vw,-100vh);}
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.hidden{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 0.8s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
 }
 
 </style>
@@ -207,121 +175,165 @@ color:#aaa;
 
 <body>
 
-<div class="parallax"></div>
-<div class="stars"></div>
-
-<div id="cursorRoach">🪳</div>
+<div class="roach-fly">🪳</div>
 
 <header>
 
-<div class="moon"></div>
-<div class="fly">🪳</div>
+<div class="logo">🪳</div>
 
-<div class="hero-box">
+<h1>Cockroach Crypto Party</h1>
 
-<img src="logo.png" width="120">
+<p class="tagline">
+The People's Meme. The Roach Revolution.
+</p>
 
-<h1 class="hero-title">$CCP</h1>
+<p>$CCP | Solana Meme Token</p>
 
-<p>The Roach That Survives Every Market</p>
-<p>Built for chaos. Powered by memes.</p>
+<a class="btn" href="https://pump.fun" target="_blank">
+Buy on Pump.fun
+</a>
 
-<a class="btn" href="https://pump.fun">Buy Now</a>
-<a class="btn" href="https://t.me/coackroajanarapartii">Join Telegram</a>
-
-</div>
+<a class="btn" href="https://t.me/coackroajanarapartii" target="_blank">
+Join Telegram
+</a>
 
 </header>
 
-<!-- PRICE -->
-<section class="fade">
-<h2>💎 Live Price</h2>
-<div class="price-box">
-$CCP Price: <span id="price">$0.00012</span> 🚀
-</div>
-</section>
-
-<!-- SOCIAL PROOF -->
-<section class="fade">
-<h2>🧠 Community Growth</h2>
-<div class="proof">
-<div>🔥 2,000+ Holders</div>
-<div>🌍 15+ Countries</div>
-<div>💬 Active Community</div>
-<div>🚀 Growing Daily</div>
-</div>
-</section>
-
-<!-- ABOUT -->
-<section class="fade">
+<section class="hidden">
 <h2>🪳 About CCP</h2>
 <div class="card">
-<p>Community-driven meme token inspired by survival.</p>
-<p>No affiliation. Pure culture.</p>
+<p>
+Welcome to Cockroach Crypto Party ($CCP),
+a community-driven meme token inspired by internet culture,
+memes, and the legendary survival spirit of the cockroach.
+</p>
+<br>
+<p>
+CCP is created for entertainment, community participation,
+and crypto culture. No political affiliation or official connection
+is claimed with any organization.
+</p>
 </div>
 </section>
 
-<!-- WHY -->
-<section class="fade">
+<section class="hidden">
 <h2>🚀 Why CCP?</h2>
+
 <div class="grid">
 
-<div class="card">Survival</div>
-<div class="card">Memes</div>
-<div class="card">Speed</div>
-<div class="card">Community</div>
-
-</div>
-</section>
-
-<!-- HOW TO BUY -->
-<section class="fade">
-<h2>🛒 How to Buy</h2>
-<div class="grid">
-
-<div class="card">Get SOL</div>
-<div class="card">Connect Wallet</div>
-<div class="card">Swap</div>
-<div class="card">Join</div>
-
-</div>
-</section>
-
-<!-- DISCLAIMER -->
-<section class="fade">
-<h2>⚠️ Disclaimer</h2>
 <div class="card">
-<p>Meme token. No financial promises. DYOR.</p>
+<h3>🪳 Survival Mode</h3>
+<p>Cockroaches survived millions of years. CCP represents resilience.</p>
 </div>
+
+<div class="card">
+<h3>😂 Meme Power</h3>
+<p>Built around humor, creativity and viral memes.</p>
+</div>
+
+<div class="card">
+<h3>⚡ Solana Speed</h3>
+<p>Fast transactions and low fees.</p>
+</div>
+
+<div class="card">
+<h3>🌎 Community</h3>
+<p>A global meme army.</p>
+</div>
+
+</div>
+</section>
+
+<section class="hidden">
+<h2>💰 Tokenomics</h2>
+
+<div class="card token">
+
+<p><b>Name:</b> Cockroach Crypto Party</p>
+<p><b>Ticker:</b> <span>$CCP</span></p>
+<p><b>Blockchain:</b> Solana</p>
+<p><b>Contract:</b> Coming Soon</p>
+<p><b>Total Supply:</b> 1,000,000,000 CCP</p>
+
+<br>
+
+<ul>
+<li>💧 Liquidity: 80%</li>
+<li>🌎 Community: 10%</li>
+<li>📢 Marketing: 5%</li>
+<li>🛠 Development: 5%</li>
+</ul>
+
+</div>
+</section>
+
+<section class="hidden">
+<h2>🗺 Roadmap</h2>
+
+<div class="roadmap">
+
+<div class="card">
+<h3>Phase 1 🥚 Egg Stage</h3>
+<ul>
+<li>Brand creation</li>
+<li>Website launch</li>
+<li>Social media setup</li>
+<li>Meme campaign</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Phase 2 🪳 Baby Roach</h3>
+<ul>
+<li>Token launch</li>
+<li>Community growth</li>
+<li>Marketing</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Phase 3 👑 Mega Roach</h3>
+<ul>
+<li>NFT collection</li>
+<li>Global expansion</li>
+<li>Events</li>
+</ul>
+</div>
+
+</div>
+</section>
+
+<section class="hidden">
+<h2>📢 Join The Roach Army</h2>
+
+<div class="card">
+<p>🐦 X: <a href="https://x.com/Cockroaccoin" target="_blank">Follow</a></p>
+<p>💬 Telegram: <a href="https://t.me/coackroajanarapartii" target="_blank">Join</a></p>
+<p>🎮 Discord: <a href="https://discord.gg/5dJdRhgFa" target="_blank">Join</a></p>
+</div>
+
 </section>
 
 <footer>
-<p>© 2026 CCP</p>
+<p>🪳 Cockroach Crypto Party ($CCP)</p>
+<p>A meme token for entertainment & culture</p>
+<p>© 2026 CCP Community</p>
 </footer>
 
 <script>
 
-/* FADE */
-const obs=new IntersectionObserver(e=>{
-e.forEach(el=>{
-if(el.isIntersecting){el.target.classList.add("show")}
-});
-});
-document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
-
-/* CURSOR ROACH */
-const roach=document.getElementById("cursorRoach");
-document.addEventListener("mousemove",e=>{
-roach.style.left=e.clientX+"px";
-roach.style.top=e.clientY+"px";
+/* SCROLL ANIMATION */
+const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
 });
 
-/* FAKE LIVE PRICE */
-let price=0.00012;
-setInterval(()=>{
-price += (Math.random()-0.5)*0.00001;
-document.getElementById("price").innerText=price.toFixed(6);
-},1500);
+document.querySelectorAll(".hidden").forEach(el=>{
+    observer.observe(el);
+});
 
 </script>
 
