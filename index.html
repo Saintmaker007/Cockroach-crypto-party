@@ -1,64 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Cockroach Crypto Party 🪳 | $CCP</title>
-<link rel="stylesheet" href="style.css">
-</head>
+<style>
+/* Reset & Base Styles */
+body {
+  background:#050505;
+  color:white;
+  font-family:Arial, sans-serif;
+  overflow-x:hidden;
+  margin:0;
+  padding:0;
+  line-height:1.6;
+}
+body::before {
+  content:"";
+  position:fixed;
+  width:900px;height:900px;
+  background:radial-gradient(circle,#8cff00 0%, transparent 60%);
+  filter:blur(150px);
+  opacity:.15;
+  z-index:-1;
+}
 
+/* CONTROL PANEL */
+.control-panel {
+  position:fixed;
+  top:10px;
+  right:10px;
+  display:flex;
+  gap:10px;
+  z-index:999;
+}
+.control-panel button {
+  padding:8px 12px;
+  border:none;
+  border-radius:8px;
+  background:#8cff00;
+  cursor:pointer;
+  font-weight:bold;
+}
+.control-panel button:hover {
+  transform:scale(1.1);
+  box-shadow:0 0 15px #8cff00;
+}
+
+/* HEADER */
+header {
+  text-align:center;
+  padding:60px 20px;
+  background:linear-gradient(135deg,#0a0a0a,#1a3300);
+}
+.logo {
+  font-size:110px;
+  animation:float 3s infinite;
+}
+@keyframes float {
+  0%,100% {transform:translateY(0)}
+  50% {transform:translateY(-20px)}
+}
+h1 {
+  font-size:55px;
+  color:#8cff00;
+  text-shadow:0 0 25px #8cff00;
+}
+.tagline {
+  margin-top:15px;
+  font-size:20px;
+  opacity:.9;
+}
+.description {
+  max-width:800px;
+  margin:auto;
+  margin-top:15px;
+  font-size:18px;
+  padding:0 10px;
+}
+
+/* Buttons */
+.btn {
+  display:inline-block;
+  margin:15px 10px;
+  padding:15px 30px;
+  border-radius:40px;
+  background:#8cff00;
+  color:black;
+  font-weight:bold;
+  text-decoration:none;
+  transition:.3s;
+}
+.btn:hover {
+  transform:scale(1.1);
+  box-shadow:0 0 25px #8cff00;
+}
+
+/* Sections */
+section {
+  padding:70px 10%;
+}
+h2 {
+  font-size:38px;
+  color:#8cff00;
+  margin-bottom:20px;
+}
+.card {
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:25px;
+  border-radius:15px;
+  margin:15px 0;
+  backdrop-filter:blur(10px);
+  transition:.3s;
+}
+.card:hover {
+  transform:translateY(-5px);
+  box-shadow:0 0 20px rgba(140,255,0,0.3);
+}
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+
+/* Social Icons */
+.social a {
+  margin:10px;
+  font-size:22px;
+  color:#fff;
+  transition:.3s;
+}
+.social a:hover {
+  transform:scale(1.3);
+  color:#8cff00;
+}
+
+/* Roach Swarm */
+.roach {
+  position:fixed;
+  font-size:35px;
+  animation:fly linear infinite;
+}
+@keyframes fly {
+  from {transform:translate(-10vw,100vh);}
+  to {transform:translate(110vw,-100vh);}
+}
+
+/* Glow Moon Animation */
+@keyframes moonPulse {
+  0%,100% {transform:scale(1); opacity:0.7;}
+  50% {transform:scale(1.1); opacity:1;}
+}
+/* Moon glow pulse for background effect */
+.moon {
+  position:fixed;
+  top:10%;
+  right:10%;
+  width:150px;
+  height:150px;
+  background:radial-gradient(circle, #8cff00, transparent);
+  border-radius:50%;
+  animation: moonPulse 4s ease-in-out infinite;
+  z-index:-1;
+}
+
+/* Popup Notifications */
+.popup {
+  position:fixed;
+  bottom:20px;
+  left:20px;
+  background:#111;
+  padding:15px;
+  border:1px solid #8cff00;
+  border-radius:10px;
+  display:none;
+  z-index:9999;
+  font-size:14px;
+}
+.popup.show {
+  display:block;
+  animation: fadeInOut 3s forwards;
+}
+@keyframes fadeInOut {
+  0% {opacity:0; transform:translateY(20px);}
+  10% {opacity:1;}
+  90% {opacity:1;}
+  100% {opacity:0; transform:translateY(-20px);}
+}
+
+/* Game Area */
+#game {
+  height:200px;
+  background:#111;
+  border-radius:15px;
+  position:relative;
+  overflow:hidden;
+  margin-top:20px;
+}
+.roachGame {
+  position:absolute;
+  font-size:30px;
+  cursor:pointer;
+}
+</style>
+</head>
 <body>
 
 <!-- CONTROL PANEL -->
 <div class="control-panel">
-<button onclick="toggleSound()">🔊 Sound</button>
-<button onclick="toggleVibration()">📳 Vibration</button>
+  <button onclick="toggleSound()">🔊 Sound</button>
+  <button onclick="toggleVibration()">📳 Vibration</button>
 </div>
 
 <!-- HEADER -->
 <header>
-<div class="logo">🪳</div>
-<h1>Cockroach Crypto Party</h1>
-<p class="tagline">The People's Meme. The Roach Revolution.</p>
-<p>$CCP | Solana Meme Token</p>
-
-<a class="btn" href="https://pump.fun" target="_blank">💰 Buy</a>
-<a class="btn" href="https://t.me/coackroajanarapartii" target="_blank">💬 Telegram</a>
+  <div class="logo">🪳</div>
+  <h1>Cockroach Crypto Party</h1>
+  <p class="tagline">The People's Meme. The Roach Revolution.</p>
+  <p class="description">
+    Welcome to CCP, the meme token inspired by internet culture and the legendary resilience of cockroaches. 
+    Built for entertainment, community, and unstoppable energy in the crypto space. Join the movement that survives all storms!
+  </p>
+  <div class="buttons">
+    <a class="btn" href="https://pump.fun" target="_blank">💰 Buy Now</a>
+    <a class="btn" href="https://t.me/coackroajanarapartii" target="_blank">💬 Join Telegram</a>
+  </div>
+  <!-- Moon animation background -->
+  <div class="moon"></div>
 </header>
 
-<!-- ABOUT -->
+<!-- ABOUT CCP -->
 <section>
 <h2>🪳 About CCP</h2>
 <div class="card">
 <p>
-Welcome to Cockroach Crypto Party ($CCP), a community-driven meme token inspired by internet culture,
-memes, and the legendary survival spirit of the cockroach.
-</p>
-
-<p>
-Cockroaches have survived extinction-level events, global chaos, and time itself — and CCP represents
-that same unstoppable energy in the crypto space.
-</p>
-
-<p>
-This project is built for the community, powered by memes, and designed to thrive in any market condition.
-Whether it's a bull run or a crash, CCP is here to survive, spread, and dominate timelines.
-</p>
-
-<p>
-CCP is created purely for entertainment, culture, and participation. No official affiliations — just raw internet energy.
+Cockroach Crypto Party ($CCP) is a community-driven meme token on Solana representing resilience, humor, and viral energy. 
+Inspired by the cockroach's ability to survive extinction, CCP aims to thrive in any market condition. 
+Join us in spreading memes, building the community, and dominating timelines with unstoppable energy!
 </p>
 </div>
 </section>
 
-<!-- WHY -->
+<!-- WHY CCP -->
 <section>
 <h2>🚀 Why CCP?</h2>
 <div class="grid">
-<div class="card"><h3>🪳 Survival Mode</h3><p>Markets fall. Coins die. Roaches stay.</p></div>
-<div class="card"><h3>😂 Meme Power</h3><p>Designed for viral spread and chaos.</p></div>
-<div class="card"><h3>⚡ Solana Speed</h3><p>Fast, cheap, scalable.</p></div>
-<div class="card"><h3>🌎 Community</h3><p>The Roach Army grows stronger daily.</p></div>
+  <div class="card"><h3>🪳 Survival Mode</h3><p>Markets fall. Coins die. Roaches stay.</p></div>
+  <div class="card"><h3>😂 Meme Power</h3><p>Designed for viral spread and chaos.</p></div>
+  <div class="card"><h3>⚡ Solana Speed</h3><p>Fast, cheap, scalable.</p></div>
+  <div class="card"><h3>🌎 Community</h3><p>The Roach Army grows stronger daily.</p></div>
 </div>
 </section>
 
@@ -71,12 +262,11 @@ CCP is created purely for entertainment, culture, and participation. No official
 <p><b>Blockchain:</b> Solana</p>
 <p><b>Contract Address:</b> Coming Soon</p>
 <p><b>Total Supply:</b> 1,000,000,000 CCP</p>
-
 <ul>
-<li>💧 Liquidity: 80%</li>
-<li>🌎 Community: 10%</li>
-<li>📢 Marketing: 5%</li>
-<li>🛠 Development: 5%</li>
+  <li>💧 Liquidity: 80%</li>
+  <li>🌎 Community: 10%</li>
+  <li>📢 Marketing: 5%</li>
+  <li>🛠 Development: 5%</li>
 </ul>
 </div>
 </section>
@@ -85,13 +275,13 @@ CCP is created purely for entertainment, culture, and participation. No official
 <section>
 <h2>🗺 Roadmap</h2>
 <div class="grid">
-<div class="card"><h3>🥚 Phase 1</h3><ul><li>Brand</li><li>Website</li><li>Socials</li></ul></div>
-<div class="card"><h3>🪳 Phase 2</h3><ul><li>Launch</li><li>Growth</li><li>Marketing</li></ul></div>
-<div class="card"><h3>👑 Phase 3</h3><ul><li>NFT</li><li>Expansion</li></ul></div>
+  <div class="card"><h3>🥚 Phase 1</h3><ul><li>Brand</li><li>Website</li><li>Socials</li></ul></div>
+  <div class="card"><h3>🪳 Phase 2</h3><ul><li>Launch</li><li>Growth</li><li>Marketing</li></ul></div>
+  <div class="card"><h3>👑 Phase 3</h3><ul><li>NFT</li><li>Expansion</li></ul></div>
 </div>
 </section>
 
-<!-- CHART -->
+<!-- LIVE CHART -->
 <section>
 <h2>📈 Live Chart</h2>
 <div class="card">
@@ -99,7 +289,7 @@ CCP is created purely for entertainment, culture, and participation. No official
 </div>
 </section>
 
-<!-- LEADERBOARD -->
+<!-- TOP HOLDERS LEADERBOARD -->
 <section>
 <h2>🏆 Top Holders</h2>
 <div class="card">
@@ -107,13 +297,13 @@ CCP is created purely for entertainment, culture, and participation. No official
 </div>
 </section>
 
-<!-- GAME -->
+<!-- ROACH SMASH GAME -->
 <section>
 <h2>🎮 Roach Smash Game</h2>
 <div id="game"></div>
 </section>
 
-<!-- SOCIAL -->
+<!-- SOCIAL LINKS -->
 <section>
 <h2>📢 Join The Roach Army</h2>
 <div class="card social">
@@ -124,11 +314,75 @@ CCP is created purely for entertainment, culture, and participation. No official
 </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-<p>🪳 Cockroach Crypto Party ($CCP)</p>
-<p>© 2026 CCP Community</p>
+<p>🪳 Cockroach Crypto Party ($CCP) © 2026</p>
 </footer>
 
-<script src="script.js"></script>
+<!-- Popup Notifications -->
+<div class="popup" id="popup"></div>
+
+<!-- Scripts -->
+<script>
+/* Toggle sound and vibration states */
+let soundOn = false;
+let vibrationOn = false;
+
+function toggleSound() {
+  soundOn = !soundOn;
+  alert("Sound " + (soundOn ? "Enabled" : "Disabled"));
+}
+function toggleVibration() {
+  vibrationOn = !vibrationOn;
+  alert("Vibration " + (vibrationOn ? "Enabled" : "Disabled"));
+}
+
+/* Fake buy notifications */
+const names = ["Whale","Alpha","Trader","MoonBoy","Degenerate"];
+setInterval(()=>{
+  const popup = document.getElementById("popup");
+  popup.innerText = names[Math.floor(Math.random()*names.length)] + " bought " + (Math.random()*3).toFixed(2) + " SOL 🚀";
+  popup.className = "popup show";
+  setTimeout(()=>{
+    popup.className = "popup";
+  },3000);
+},4000);
+
+/* Leaderboard data (simulate) */
+const leaderboard = document.getElementById("leaderboard");
+for(let i=0;i<5;i++){
+  const li = document.createElement("li");
+  li.innerText = "Wallet_" + (i+1) + " — " + (Math.random()*100).toFixed(2) + " SOL";
+  leaderboard.appendChild(li);
+}
+
+/* Roach swarm animation */
+for(let i=0;i<8;i++){
+  const r=document.createElement("div");
+  r.innerText="🪳";
+  r.className="roach";
+  r.style.left=Math.random()*100+"vw";
+  r.style.top=Math.random()*100+"vh";
+  r.style.animationDuration=(8+Math.random()*6)+"s";
+  document.body.appendChild(r);
+}
+
+/* Roach Smash Game */
+const gameArea = document.getElementById("game");
+setInterval(()=>{
+  const r=document.createElement("div");
+  r.innerText="🪳";
+  r.className="roachGame";
+  r.style.left=Math.random()*90+"%";
+  r.style.top=Math.random()*80+"%";
+  r.onclick=()=>{
+    r.remove();
+    if(vibrationOn && navigator.vibrate) navigator.vibrate(30);
+    if(soundOn) new Audio("https://actions.google.com/sounds/v1/cartoon/pop.ogg").play();
+  };
+  gameArea.appendChild(r);
+  setTimeout(()=>{if(r.parentNode) r.remove();},3000);
+},1000);
+</script>
 </body>
 </html>
