@@ -1,388 +1,1171 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#8cff00">
 <title>Cockroach Crypto Party 🪳 | $CCP</title>
+<meta name="description" content="Cockroach Crypto Party ($CCP) — a community-driven meme token on Solana inspired by internet culture, memes, and the legendary survival spirit of the cockroach.">
+<meta property="og:title" content="Cockroach Crypto Party 🪳 | $CCP">
+<meta property="og:description" content="The People's Meme. The Roach Revolution. A Solana meme token built to survive every market cycle.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="logo.png"><!-- once deployed, update to the full https:// URL so Telegram/X/Discord can preview it -->
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-/* Reset & Base Styles */
-body {
-  background:#050505;
-  color:white;
-  font-family:Arial, sans-serif;
+
+/* ============ TOKENS ============ */
+:root{
+  --bg:#070907;
+  --bg-soft:#0b0e0a;
+  --surface:#12160f;
+  --surface-2:#191f14;
+  --line:#262e1c;
+  --green:#8cff00;
+  --green-deep:#4a7a00;
+  --amber:#ffc22e;
+  --text:#f3f6ec;
+  --text-dim:#a7b096;
+  --ink:#0b0f07;
+  --font-display:'Unbounded', sans-serif;
+  --font-mono:'JetBrains Mono', monospace;
+  --font-body:'Plus Jakarta Sans', sans-serif;
+  --container:1180px;
+}
+
+*{ margin:0; padding:0; box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; scroll-padding-top:90px; }
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
   overflow-x:hidden;
-  margin:0;
-  padding:0;
   line-height:1.6;
 }
-body::before {
-  content:"";
-  position:fixed;
-  width:900px;height:900px;
-  background:radial-gradient(circle,#8cff00 0%, transparent 60%);
-  filter:blur(150px);
-  opacity:.15;
-  z-index:-1;
+
+img,svg{ display:block; max-width:100%; }
+a{ color:inherit; text-decoration:none; }
+ul{ list-style:none; }
+
+.container{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 clamp(20px,5vw,60px);
 }
 
-/* CONTROL PANEL */
-.control-panel {
-  position:fixed;
-  top:10px;
-  right:10px;
-  display:flex;
-  gap:10px;
-  z-index:999;
-}
-.control-panel button {
-  padding:8px 12px;
-  border:none;
-  border-radius:8px;
-  background:#8cff00;
-  cursor:pointer;
-  font-weight:bold;
-}
-.control-panel button:hover {
-  transform:scale(1.1);
-  box-shadow:0 0 15px #8cff00;
-}
-
-/* HEADER */
-header {
-  text-align:center;
-  padding:60px 20px;
-  background:linear-gradient(135deg,#0a0a0a,#1a3300);
-}
-.logo {
-  font-size:110px;
-  animation:float 3s infinite;
-}
-@keyframes float {
-  0%,100% {transform:translateY(0)}
-  50% {transform:translateY(-20px)}
-}
-h1 {
-  font-size:55px;
-  color:#8cff00;
-  text-shadow:0 0 25px #8cff00;
-}
-.tagline {
-  margin-top:15px;
-  font-size:20px;
+.eyebrow{
+  font-family:var(--font-mono);
+  color:var(--green);
+  font-size:.8rem;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  margin-bottom:14px;
   opacity:.9;
 }
-.description {
-  max-width:800px;
-  margin:auto;
-  margin-top:15px;
-  font-size:18px;
-  padding:0 10px;
+
+h1,h2,h3{
+  font-family:var(--font-display);
+  color:var(--text);
+  line-height:1.08;
 }
 
-/* Buttons */
-.btn {
-  display:inline-block;
-  margin:15px 10px;
-  padding:15px 30px;
-  border-radius:40px;
-  background:#8cff00;
-  color:black;
-  font-weight:bold;
-  text-decoration:none;
-  transition:.3s;
-}
-.btn:hover {
-  transform:scale(1.1);
-  box-shadow:0 0 25px #8cff00;
+h2{
+  font-size:clamp(2rem,4vw,2.7rem);
+  font-weight:800;
+  margin-bottom:36px;
+  letter-spacing:-.01em;
 }
 
-/* Sections */
-section {
-  padding:70px 10%;
+.card{
+  background:var(--surface);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:28px;
 }
-h2 {
-  font-size:38px;
-  color:#8cff00;
-  margin-bottom:20px;
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:15px 32px;
+  border-radius:999px;
+  font-family:var(--font-body);
+  font-weight:700;
+  font-size:.98rem;
+  cursor:pointer;
+  border:1px solid transparent;
+  transition:transform .25s ease, box-shadow .25s ease, background .25s ease;
 }
-.card {
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
-  padding:25px;
-  border-radius:15px;
-  margin:15px 0;
-  backdrop-filter:blur(10px);
-  transition:.3s;
+.btn-primary{
+  background:var(--green);
+  color:var(--ink);
+  box-shadow:0 0 0 rgba(140,255,0,.5);
 }
-.card:hover {
-  transform:translateY(-5px);
-  box-shadow:0 0 20px rgba(140,255,0,0.3);
+.btn-primary:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(140,255,0,.35);
 }
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+.btn-ghost{
+  background:rgba(243,246,236,.04);
+  border-color:var(--line);
+  color:var(--text);
+  backdrop-filter:blur(6px);
+}
+.btn-ghost:hover{
+  border-color:var(--green);
+  color:var(--green);
+  transform:translateY(-3px);
+}
+
+:focus-visible{ outline:2px solid var(--green); outline-offset:3px; border-radius:4px; }
+
+/* ============ GRAIN OVERLAY ============ */
+.grain{
+  position:fixed; inset:0; pointer-events:none; z-index:15;
+  opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ============ MINI ROACH (reusable) ============ */
+.mini-roach path{ stroke:currentColor; stroke-width:3; stroke-linecap:round; fill:none; }
+.mini-roach ellipse{ fill:currentColor; }
+
+/* ============ NAV ============ */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:200;
+  transition:background .3s ease, border-color .3s ease, backdrop-filter .3s ease;
+  border-bottom:1px solid transparent;
+}
+.nav::before{
+  content:"";
+  display:block;
+  height:5px;
+  background:repeating-linear-gradient(45deg, var(--amber) 0 12px, var(--ink) 12px 24px);
+}
+.nav.scrolled{
+  background:rgba(7,9,7,.82);
+  backdrop-filter:blur(14px);
+  border-bottom-color:var(--line);
+}
+.nav-inner{
+  max-width:var(--container);
+  margin:0 auto;
+  padding:14px clamp(20px,5vw,60px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   gap:20px;
 }
+.nav-logo{
+  display:flex; align-items:center; gap:10px;
+  font-family:var(--font-display); font-weight:800; font-size:1.1rem;
+  color:var(--text);
+}
+.logo-mark{ width:36px; height:36px; border-radius:50%; object-fit:cover; flex-shrink:0; }
+.nav-links{
+  display:flex; align-items:center; gap:30px;
+  font-size:.92rem; font-weight:600;
+}
+.nav-links a{ color:var(--text-dim); transition:color .2s ease; position:relative; }
+.nav-links a:hover{ color:var(--text); }
+.nav-links a::after{
+  content:""; position:absolute; left:0; bottom:-6px; width:0; height:2px;
+  background:var(--green); transition:width .25s ease;
+}
+.nav-links a:hover::after{ width:100%; }
+.nav-cta{
+  padding:11px 22px; font-size:.88rem;
+}
+.nav-toggle{
+  display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;
+}
+.nav-toggle span{ width:24px; height:2px; background:var(--text); border-radius:2px; transition:.3s; }
 
-/* Social Icons */
-.social a {
-  margin:10px;
-  font-size:22px;
-  color:#fff;
-  transition:.3s;
-}
-.social a:hover {
-  transform:scale(1.3);
-  color:#8cff00;
-}
-
-/* Roach Swarm */
-.roach {
-  position:fixed;
-  font-size:35px;
-  animation:fly linear infinite;
-}
-@keyframes fly {
-  from {transform:translate(-10vw,100vh);}
-  to {transform:translate(110vw,-100vh);}
-}
-
-/* Glow Moon Animation */
-@keyframes moonPulse {
-  0%,100% {transform:scale(1); opacity:0.7;}
-  50% {transform:scale(1.1); opacity:1;}
-}
-/* Moon glow pulse for background effect */
-.moon {
-  position:fixed;
-  top:10%;
-  right:10%;
-  width:150px;
-  height:150px;
-  background:radial-gradient(circle, #8cff00, transparent);
-  border-radius:50%;
-  animation: moonPulse 4s ease-in-out infinite;
-  z-index:-1;
-}
-
-/* Popup Notifications */
-.popup {
-  position:fixed;
-  bottom:20px;
-  left:20px;
-  background:#111;
-  padding:15px;
-  border:1px solid #8cff00;
-  border-radius:10px;
-  display:none;
-  z-index:9999;
-  font-size:14px;
-}
-.popup.show {
-  display:block;
-  animation: fadeInOut 3s forwards;
-}
-@keyframes fadeInOut {
-  0% {opacity:0; transform:translateY(20px);}
-  10% {opacity:1;}
-  90% {opacity:1;}
-  100% {opacity:0; transform:translateY(-20px);}
-}
-
-/* Game Area */
-#game {
-  height:200px;
-  background:#111;
-  border-radius:15px;
+/* ============ HERO ============ */
+.hero{
   position:relative;
+  padding:170px 20px 100px;
+  text-align:center;
   overflow:hidden;
-  margin-top:20px;
+  background:radial-gradient(ellipse at 50% 0%, var(--bg-soft), var(--bg) 70%);
 }
-.roachGame {
-  position:absolute;
-  font-size:30px;
-  cursor:pointer;
+.hero-glow{
+  position:absolute; top:38%; left:50%; width:640px; height:640px;
+  transform:translate(-50%,-50%);
+  background:radial-gradient(circle, rgba(140,255,0,.32) 0%, rgba(140,255,0,.07) 45%, transparent 72%);
+  filter:blur(6px);
+  animation:pulseGlow 6s ease-in-out infinite;
+  pointer-events:none;
 }
+@keyframes pulseGlow{
+  0%,100%{ opacity:.75; transform:translate(-50%,-50%) scale(1); }
+  50%{ opacity:1; transform:translate(-50%,-50%) scale(1.09); }
+}
+.hero-inner{ position:relative; z-index:2; max-width:760px; margin:0 auto; }
+
+.badge{
+  display:inline-flex; align-items:center; gap:8px;
+  font-family:var(--font-mono); font-size:.78rem; letter-spacing:.08em;
+  color:var(--green); background:rgba(140,255,0,.08);
+  border:1px solid rgba(140,255,0,.3); border-radius:999px;
+  padding:8px 18px; margin-bottom:34px;
+  animation:fadeUp .7s ease both;
+}
+
+.hero-logo-wrap{
+  width:min(52vw,260px); margin:0 auto 22px; position:relative;
+  animation:fadeUp .8s ease both .1s;
+}
+.hero-logo{
+  width:100%; height:auto; border-radius:50%;
+  filter:drop-shadow(0 22px 45px rgba(140,255,0,.35));
+  animation:heroSpin 40s linear infinite;
+  border:3px solid rgba(140,255,0,.35);
+}
+@keyframes heroSpin{ to{ transform:rotate(360deg); } }
+
+.hero h1{
+  font-size:clamp(2.6rem,7vw,4.6rem);
+  font-weight:900;
+  background:linear-gradient(135deg,var(--text) 30%,var(--green) 100%);
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  margin-bottom:16px;
+  animation:fadeUp .8s ease both .2s;
+}
+.hero .tagline{
+  font-size:clamp(1.05rem,2vw,1.35rem);
+  color:var(--text-dim);
+  margin-bottom:10px;
+  animation:fadeUp .8s ease both .3s;
+}
+.hero .hero-sub{
+  font-family:var(--font-mono);
+  font-size:.85rem;
+  color:var(--green);
+  letter-spacing:.06em;
+  margin-bottom:38px;
+  animation:fadeUp .8s ease both .4s;
+}
+.hero-ctas{
+  display:flex; gap:16px; justify-content:center; flex-wrap:wrap;
+  animation:fadeUp .8s ease both .5s;
+}
+@keyframes fadeUp{ from{ opacity:0; transform:translateY(22px); } to{ opacity:1; transform:translateY(0); } }
+
+.scroll-cue{
+  position:absolute; bottom:26px; left:50%; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  font-family:var(--font-mono); font-size:.7rem; letter-spacing:.12em;
+  color:var(--text-dim); z-index:2;
+}
+.scroll-cue span{
+  width:1px; height:26px; background:linear-gradient(var(--green),transparent);
+  animation:scrollLine 1.8s ease-in-out infinite;
+}
+@keyframes scrollLine{ 0%{ opacity:0; transform:scaleY(.4); transform-origin:top; } 50%{ opacity:1; transform:scaleY(1); transform-origin:top; } 100%{ opacity:0; transform:scaleY(.4); transform-origin:bottom; } }
+
+/* ============ MARQUEE ============ */
+.marquee{
+  border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+  background:var(--bg-soft);
+  overflow:hidden; white-space:nowrap; padding:16px 0;
+}
+.marquee-track{
+  display:inline-flex; gap:48px; animation:scrollMarquee 26s linear infinite;
+}
+.marquee-track span{
+  font-family:var(--font-mono); font-size:.85rem; letter-spacing:.08em;
+  color:var(--text-dim); text-transform:uppercase; display:inline-flex; gap:48px;
+}
+.marquee-track span b{ color:var(--green); font-weight:600; }
+@keyframes scrollMarquee{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+
+/* ============ SECTIONS / REVEAL ============ */
+section{ padding:clamp(70px,10vw,120px) 0; position:relative; }
+section:nth-of-type(even){ background:var(--bg-soft); }
+
+.reveal-item{ opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
+.reveal-item.visible{ opacity:1; transform:translateY(0); }
+
+/* ============ ABOUT ============ */
+.about-grid{ display:grid; grid-template-columns:1.3fr .7fr; gap:60px; align-items:center; }
+.about-copy p{ color:var(--text-dim); margin-bottom:16px; }
+.about-copy p:last-child{ margin-bottom:0; }
+.about-visual{ display:flex; justify-content:center; }
+.about-orb{
+  position:relative; width:220px; height:220px; border-radius:50%;
+  background:radial-gradient(circle at 35% 30%, var(--surface-2), var(--surface) 70%);
+  border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center;
+}
+.about-orb::before{
+  content:""; position:absolute; inset:-14px; border-radius:50%;
+  border:1px dashed var(--line); animation:spin 30s linear infinite;
+}
+@keyframes spin{ to{ transform:rotate(360deg); } }
+.orb-logo{ width:150px; height:150px; border-radius:50%; object-fit:cover; filter:drop-shadow(0 0 24px rgba(140,255,0,.4)); }
+
+/* ============ WHY GRID ============ */
+.grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:20px; }
+.why-card{ transition:transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+.why-card:hover{ transform:translateY(-6px); border-color:rgba(140,255,0,.4); box-shadow:0 16px 40px rgba(0,0,0,.35); }
+.why-card h3{ font-size:1.08rem; font-weight:700; margin-bottom:10px; }
+.why-card p{ color:var(--text-dim); font-size:.94rem; }
+
+/* ============ HOW TO BUY ============ */
+.steps{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:20px; counter-reset:step; }
+.step{ position:relative; padding-top:8px; }
+.step-num{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:40px; height:40px; border-radius:50%;
+  background:var(--surface-2); border:1px solid var(--line);
+  font-family:var(--font-mono); font-weight:700; color:var(--green);
+  margin-bottom:16px;
+}
+.step h3{ font-size:1.05rem; font-weight:700; margin-bottom:8px; }
+.step p{ color:var(--text-dim); font-size:.92rem; }
+.step-link{ color:var(--green); font-weight:600; font-size:.88rem; display:inline-block; margin-top:8px; }
+
+/* ============ TOKENOMICS ============ */
+.tokenomics-grid{ display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; }
+.token-card{ display:flex; flex-direction:column; gap:14px; }
+.token-row{
+  display:flex; align-items:center; justify-content:space-between;
+  padding-bottom:14px; border-bottom:1px solid var(--line);
+  font-size:.94rem; gap:10px; flex-wrap:wrap;
+}
+.token-row:last-child{ border-bottom:none; padding-bottom:0; }
+.token-row span{ color:var(--text-dim); }
+.token-row b{ font-family:var(--font-mono); font-weight:600; }
+.token-row b.accent{ color:var(--green); }
+.copy-btn{
+  font-family:var(--font-mono); font-size:.72rem; letter-spacing:.04em;
+  background:var(--surface-2); border:1px solid var(--line); color:var(--text-dim);
+  padding:5px 12px; border-radius:999px; cursor:pointer; transition:.2s;
+}
+.copy-btn:hover{ border-color:var(--green); color:var(--green); }
+
+.chart-wrap{ display:flex; flex-direction:column; align-items:center; gap:26px; }
+.donut-svg{ width:220px; height:220px; transition:transform .8s ease, opacity .8s ease; opacity:0; transform:scale(.75) rotate(-40deg); }
+.donut-svg.visible{ opacity:1; transform:scale(1) rotate(0deg); }
+.donut-center{ font-family:var(--font-display); font-weight:800; font-size:1.05rem; fill:var(--text); }
+
+.legend{ display:grid; grid-template-columns:1fr 1fr; gap:12px 24px; width:100%; max-width:320px; }
+.legend-item{ display:flex; align-items:center; gap:9px; font-size:.86rem; }
+.legend-dot{ width:10px; height:10px; border-radius:3px; flex-shrink:0; }
+.legend-item span{ color:var(--text-dim); }
+.legend-item b{ font-family:var(--font-mono); margin-left:auto; }
+
+/* ============ CHAIN COMPARE ============ */
+.chain-compare{ margin-top:56px; }
+.chain-compare-title{
+  font-family:var(--font-display); font-weight:700; font-size:1.2rem;
+  margin-bottom:22px; text-align:center;
+}
+.chain-cards{ display:grid; grid-template-columns:1fr 1fr; gap:20px; max-width:640px; margin:0 auto; }
+.chain-card{
+  background:var(--surface); border:1px solid var(--line); border-radius:20px; padding:24px;
+}
+.chain-card--solana{ border-color:rgba(140,255,0,.45); background:linear-gradient(160deg, rgba(140,255,0,.07), var(--surface) 60%); }
+.chain-name{
+  font-family:var(--font-mono); font-size:.78rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--text-dim); margin-bottom:16px;
+}
+.chain-card--solana .chain-name{ color:var(--green); }
+.chain-stat{ display:flex; justify-content:space-between; align-items:baseline; padding:9px 0; border-top:1px solid var(--line); gap:10px; }
+.chain-stat:first-of-type{ border-top:none; }
+.chain-stat span{ color:var(--text-dim); font-size:.86rem; }
+.chain-stat b{ font-family:var(--font-mono); font-size:.92rem; text-align:right; }
+.chain-note{ text-align:center; color:var(--text-dim); font-size:.78rem; margin-top:16px; opacity:.75; }
+
+/* ============ GAME ============ */
+.play-intro{ text-align:center; color:var(--text-dim); max-width:520px; margin:-20px auto 36px; }
+.game-panel{
+  max-width:400px; margin:0 auto; border:1px solid var(--line); border-radius:24px;
+  background:var(--surface); padding:20px; position:relative;
+}
+.game-hud{ display:flex; justify-content:space-between; padding:0 6px 16px; }
+.hud-stat{ display:flex; flex-direction:column; gap:2px; }
+.hud-stat:last-child{ text-align:right; }
+.hud-stat span{ font-family:var(--font-mono); font-size:.68rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:.08em; }
+.hud-stat b{ font-family:var(--font-display); font-size:1.3rem; color:var(--green); }
+.canvas-wrap{ position:relative; border-radius:16px; overflow:hidden; border:1px solid var(--line); background:var(--bg-soft); }
+#gameCanvas{ display:block; width:100%; height:auto; touch-action:none; cursor:pointer; }
+.game-overlay{
+  position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:14px; text-align:center; padding:30px;
+  background:rgba(7,9,7,.82); backdrop-filter:blur(4px);
+  transition:opacity .25s ease;
+}
+.game-overlay.hidden{ opacity:0; pointer-events:none; }
+.game-overlay-title{ font-family:var(--font-display); font-weight:800; font-size:1.4rem; }
+.game-overlay-sub{ color:var(--text-dim); font-size:.9rem; max-width:280px; }
+.game-overlay .score-final{ font-family:var(--font-mono); color:var(--green); font-size:2rem; font-weight:700; }
+.game-hint{ text-align:center; color:var(--text-dim); font-size:.78rem; margin-top:16px; font-family:var(--font-mono); }
+
+/* ============ WHITEPAPER ============ */
+.whitepaper-panel{
+  display:grid; grid-template-columns:1.2fr .8fr; gap:0;
+  border:1px solid var(--line); border-radius:24px; overflow:hidden;
+  background:var(--surface);
+}
+.wp-info{ padding:44px; display:flex; flex-direction:column; gap:22px; justify-content:center; }
+.wp-info p{ color:var(--text-dim); font-size:1rem; }
+.wp-info .btn{ align-self:flex-start; }
+.wp-chapters{
+  background:var(--bg-soft); padding:44px 36px; display:flex; flex-direction:column; gap:0;
+  border-left:1px solid var(--line);
+}
+.wp-chapters li{
+  display:flex; align-items:baseline; gap:16px; padding:13px 0;
+  border-bottom:1px solid var(--line); font-size:.92rem; font-weight:600;
+}
+.wp-chapters li:last-child{ border-bottom:none; }
+.wp-chapters li span{
+  font-family:var(--font-mono); color:var(--green); font-size:.82rem; font-weight:600;
+}
+
+/* ============ FAQ ============ */
+.faq-list{ max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
+.faq-item{
+  background:var(--surface); border:1px solid var(--line); border-radius:16px;
+  padding:6px 26px; transition:border-color .25s ease;
+}
+.faq-item[open]{ border-color:rgba(140,255,0,.4); }
+.faq-item summary{
+  list-style:none; cursor:pointer; padding:18px 0;
+  display:flex; align-items:center; justify-content:space-between; gap:16px;
+  font-weight:700; font-size:1rem;
+}
+.faq-item summary::-webkit-details-marker{ display:none; }
+.faq-item summary::after{
+  content:"+"; font-family:var(--font-mono); font-size:1.3rem; color:var(--green);
+  flex-shrink:0; transition:transform .3s ease;
+}
+.faq-item[open] summary::after{ transform:rotate(45deg); }
+.faq-item p{ color:var(--text-dim); font-size:.94rem; padding-bottom:22px; padding-right:30px; }
+
+/* ============ ROADMAP ============ */
+.timeline{ position:relative; max-width:760px; margin:0 auto; padding-left:44px; }
+.timeline-line{
+  position:absolute; left:19px; top:6px; bottom:6px; width:2px;
+  background:var(--line);
+}
+.timeline-fill{
+  position:absolute; left:0; top:0; width:100%; height:0;
+  background:var(--green); transform-origin:top; transition:height 1s ease;
+}
+.phase{ position:relative; margin-bottom:44px; }
+.phase:last-child{ margin-bottom:0; }
+.phase-marker{
+  position:absolute; left:-44px; top:0; width:40px; height:40px;
+  border-radius:50%; background:var(--surface); border:2px solid var(--line);
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--font-mono); font-weight:700; color:var(--text-dim);
+  transition:border-color .4s ease, color .4s ease, background .4s ease;
+}
+.phase.visible .phase-marker{ border-color:var(--green); color:var(--green); background:rgba(140,255,0,.08); }
+.phase h3{ font-size:1.1rem; font-weight:700; margin-bottom:14px; }
+.phase ul{ display:flex; flex-direction:column; gap:8px; }
+.phase li{ color:var(--text-dim); font-size:.92rem; padding-left:18px; position:relative; }
+.phase li::before{ content:"—"; position:absolute; left:0; color:var(--green); }
+
+/* ============ COMMUNITY ============ */
+.social-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+.social-pill{
+  display:flex; align-items:center; justify-content:space-between; gap:10px;
+  padding:20px 24px; border-radius:16px;
+  background:var(--surface); border:1px solid var(--line);
+  font-weight:700; font-size:.98rem;
+}
+.social-pill span{
+  font-family:var(--font-mono); font-size:.72rem; color:var(--text-dim);
+  letter-spacing:.06em; text-transform:uppercase;
+}
+.social-pill--live{ border-color:rgba(140,255,0,.4); transition:transform .25s ease, box-shadow .25s ease; cursor:pointer; }
+.social-pill--live span{ color:var(--green); }
+.social-pill--live:hover{ transform:translateY(-4px); box-shadow:0 14px 30px rgba(140,255,0,.18); }
+
+/* ============ FOOTER ============ */
+footer{ padding:60px 0 40px; text-align:center; border-top:1px solid var(--line); }
+.footer-logo{ width:48px; height:48px; border-radius:50%; margin:0 auto 16px; object-fit:cover; }
+footer p{ color:var(--text-dim); font-size:.92rem; margin-bottom:6px; }
+footer .foot-title{ font-family:var(--font-display); font-weight:700; color:var(--text); font-size:1rem; }
+.disclaimer{ max-width:520px; margin:18px auto; font-size:.78rem !important; opacity:.65; }
+.copyright{ font-family:var(--font-mono); font-size:.76rem !important; margin-top:10px; }
+
+/* ============ SCUTTLE ============ */
+.scuttle{ position:absolute; width:34px; color:var(--green); opacity:.55; pointer-events:none; z-index:1; }
+.scuttle-1{ top:72%; animation:scuttleAcross 16s linear infinite; }
+.scuttle-2{ top:34%; animation:scuttleAcross 21s linear infinite 6s; transform:scaleX(-1); }
+@keyframes scuttleAcross{
+  0%{ left:-8%; }
+  100%{ left:108%; }
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width:900px){
+  .nav-links{
+    position:fixed; top:63px; left:0; right:0; z-index:150;
+    flex-direction:column; align-items:flex-start; gap:0;
+    background:var(--bg);
+    border-bottom:1px solid var(--line);
+    max-height:0; overflow:hidden; transition:max-height .35s ease;
+  }
+  .nav-links.open{ max-height:420px; }
+  .nav-links a{ width:100%; padding:16px clamp(20px,5vw,60px); border-bottom:1px solid var(--line); }
+  .nav-cta{ display:none; }
+  .nav-toggle{ display:flex; }
+  .about-grid{ grid-template-columns:1fr; }
+  .about-visual{ order:-1; }
+  .tokenomics-grid{ grid-template-columns:1fr; }
+  .whitepaper-panel{ grid-template-columns:1fr; }
+  .wp-chapters{ border-left:none; border-top:1px solid var(--line); }
+  .chain-cards{ grid-template-columns:1fr; }
+}
+@media (max-width:520px){
+  .legend{ grid-template-columns:1fr; }
+  .hero{ padding-top:150px; }
+}
+
+@media (prefers-reduced-motion:reduce){
+  *{ animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; }
+  html{ scroll-behavior:auto; }
+}
+
 </style>
 </head>
 <body>
 
-<!-- CONTROL PANEL -->
-<div class="control-panel">
-  <button onclick="toggleSound()">🔊 Sound</button>
-  <button onclick="toggleVibration()">📳 Vibration</button>
-</div>
+<div class="grain" aria-hidden="true"></div>
 
-<!-- HEADER -->
-<header>
-  <div class="logo">🪳</div>
-  <h1>Cockroach Crypto Party</h1>
-  <p class="tagline">The People's Meme. The Roach Revolution.</p>
-  <p class="description">
-    Welcome to CCP, the meme token inspired by internet culture and the legendary resilience of cockroaches. 
-    Built for entertainment, community, and unstoppable energy in the crypto space. Join the movement that survives all storms!
-  </p>
-  <div class="buttons">
-    <a class="btn" href="https://pump.fun" target="_blank">💰 Buy Now</a>
-    <a class="btn" href="https://t.me/coackroajanarapartii" target="_blank">💬 Join Telegram</a>
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">
+      <img src="logo.png" alt="$CCP logo" class="logo-mark">
+      $CCP
+    </a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#why">Why CCP</a>
+      <a href="#play">Play</a>
+      <a href="#how-to-buy">How to Buy</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="whitepaper.pdf" target="_blank" rel="noopener">Whitepaper</a>
+      <a href="#community">Community</a>
+    </div>
+    <a href="#how-to-buy" class="btn btn-primary nav-cta">Buy $CCP</a>
   </div>
-  <!-- Moon animation background -->
-  <div class="moon"></div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true"></div>
+
+  <div class="scuttle scuttle-1" aria-hidden="true">
+    <svg class="mini-roach" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20,18 L8,10"/><path d="M22,20 L4,20"/><path d="M20,24 L8,32"/>
+      <path d="M38,18 L50,10"/><path d="M38,20 L56,20"/><path d="M38,24 L50,32"/>
+      <ellipse cx="29" cy="20" rx="16" ry="10"/><ellipse cx="16" cy="14" rx="7" ry="6"/>
+      <path d="M14,9 Q8,2 3,1"/><path d="M19,9 Q22,2 27,1"/>
+    </svg>
+  </div>
+
+  <div class="hero-inner">
+    <div class="badge">🪳 SOLANA MEME COIN &nbsp;·&nbsp; LAUNCHING ON PUMP.FUN</div>
+
+    <div class="hero-logo-wrap">
+      <img src="logo.png" alt="Cockroach Crypto Party logo" class="hero-logo">
+    </div>
+
+    <h1>Cockroach Crypto Party</h1>
+    <p class="tagline">The People's Meme. The Roach Revolution.</p>
+    <p class="hero-sub">$CCP // SOLANA MEME TOKEN</p>
+
+    <div class="hero-ctas">
+      <a href="#how-to-buy" class="btn btn-primary">🔥 How to Buy</a>
+      <a href="#community" class="btn btn-ghost">Join the Army</a>
+    </div>
+  </div>
+
+  <div class="scroll-cue"><span></span>SCROLL</div>
 </header>
 
-<!-- ABOUT CCP -->
-<section>
-<h2>🪳 About CCP</h2>
-<div class="card">
-<p>
-Cockroach Crypto Party ($CCP) is a community-driven meme token on Solana representing resilience, humor, and viral energy. 
-Inspired by the cockroach's ability to survive extinction, CCP aims to thrive in any market condition. 
-Join us in spreading memes, building the community, and dominating timelines with unstoppable energy!
-</p>
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>🪳 <b>SURVIVES</b> BEAR MARKETS &nbsp; 🪳 UNKILLABLE SINCE THE JURASSIC &nbsp; 🪳 BUILT FOR THE APOCALYPSE &nbsp; 🪳 THE ROACH ARMY NEVER DIES &nbsp; 🪳 <b>$CCP</b> ON SOLANA &nbsp; 🪳 MEME POWER ACTIVATED &nbsp;</span>
+    <span>🪳 <b>SURVIVES</b> BEAR MARKETS &nbsp; 🪳 UNKILLABLE SINCE THE JURASSIC &nbsp; 🪳 BUILT FOR THE APOCALYPSE &nbsp; 🪳 THE ROACH ARMY NEVER DIES &nbsp; 🪳 <b>$CCP</b> ON SOLANA &nbsp; 🪳 MEME POWER ACTIVATED &nbsp;</span>
+  </div>
 </div>
-</section>
 
-<!-- WHY CCP -->
-<section>
-<h2>🚀 Why CCP?</h2>
-<div class="grid">
-  <div class="card"><h3>🪳 Survival Mode</h3><p>Markets fall. Coins die. Roaches stay.</p></div>
-  <div class="card"><h3>😂 Meme Power</h3><p>Designed for viral spread and chaos.</p></div>
-  <div class="card"><h3>⚡ Solana Speed</h3><p>Fast, cheap, scalable.</p></div>
-  <div class="card"><h3>🌎 Community</h3><p>The Roach Army grows stronger daily.</p></div>
-</div>
-</section>
+<main>
 
-<!-- TOKENOMICS -->
-<section>
-<h2>💰 Tokenomics</h2>
-<div class="card">
-<p><b>Name:</b> Cockroach Crypto Party</p>
-<p><b>Ticker:</b> $CCP</p>
-<p><b>Blockchain:</b> Solana</p>
-<p><b>Contract Address:</b> Coming Soon</p>
-<p><b>Total Supply:</b> 1,000,000,000 CCP</p>
-<ul>
-  <li>💧 Liquidity: 80%</li>
-  <li>🌎 Community: 10%</li>
-  <li>📢 Marketing: 5%</li>
-  <li>🛠 Development: 5%</li>
-</ul>
-</div>
-</section>
+  <section id="about">
+    <div class="container about-grid">
+      <div class="about-copy reveal-item">
+        <p class="eyebrow">// ORIGIN_STORY</p>
+        <h2>🪳 About CCP</h2>
+        <div class="card">
+          <p>Welcome to Cockroach Crypto Party ($CCP), a community-driven meme token inspired by internet culture, memes, and the legendary survival spirit of the cockroach.</p>
+          <p>CCP is created for entertainment, community participation, and crypto culture. No political affiliation or official connection is claimed with any organization.</p>
+        </div>
+      </div>
+      <div class="about-visual reveal-item">
+        <div class="about-orb">
+          <img src="logo.png" alt="$CCP logo" class="orb-logo">
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- ROADMAP -->
-<section>
-<h2>🗺 Roadmap</h2>
-<div class="grid">
-  <div class="card"><h3>🥚 Phase 1</h3><ul><li>Brand</li><li>Website</li><li>Socials</li></ul></div>
-  <div class="card"><h3>🪳 Phase 2</h3><ul><li>Launch</li><li>Growth</li><li>Marketing</li></ul></div>
-  <div class="card"><h3>👑 Phase 3</h3><ul><li>NFT</li><li>Expansion</li></ul></div>
-</div>
-</section>
+  <section id="why">
+    <div class="container">
+      <p class="eyebrow reveal-item">// WHY_IT_SURVIVES</p>
+      <h2 class="reveal-item">🚀 Why CCP?</h2>
+      <div class="grid">
+        <div class="card why-card reveal-item">
+          <h3>🪳 Survival Mode</h3>
+          <p>Cockroaches survived millions of years. CCP represents resilience through every market cycle.</p>
+        </div>
+        <div class="card why-card reveal-item">
+          <h3>😂 Meme Power</h3>
+          <p>Built around humor, creativity and community memes.</p>
+        </div>
+        <div class="card why-card reveal-item">
+          <h3>⚡ Solana Speed</h3>
+          <p>Fast transactions and low network fees.</p>
+        </div>
+        <div class="card why-card reveal-item">
+          <h3>🌎 Community</h3>
+          <p>A meme army powered by supporters worldwide.</p>
+        </div>
+      </div>
 
-<!-- LIVE CHART -->
-<section>
-<h2>📈 Live Chart</h2>
-<div class="card">
-<iframe src="https://dexscreener.com" width="100%" height="400"></iframe>
-</div>
-</section>
+      <div class="chain-compare reveal-item">
+        <p class="chain-compare-title">The Numbers Behind the Speed</p>
+        <div class="chain-cards">
+          <div class="chain-card chain-card--solana">
+            <p class="chain-name">🪳 Solana</p>
+            <div class="chain-stat"><span>Avg. fee</span><b>$0.00025</b></div>
+            <div class="chain-stat"><span>Throughput</span><b>Up to 65,000 TPS</b></div>
+            <div class="chain-stat"><span>Block time</span><b>~400ms</b></div>
+          </div>
+          <div class="chain-card">
+            <p class="chain-name">Ethereum L1</p>
+            <div class="chain-stat"><span>Avg. fee</span><b>$1 – $5+</b></div>
+            <div class="chain-stat"><span>Throughput</span><b>~15–30 TPS</b></div>
+            <div class="chain-stat"><span>Block time</span><b>~12s</b></div>
+          </div>
+        </div>
+        <p class="chain-note">Approximate 2026 industry figures — actual fees and speeds vary with network conditions.</p>
+      </div>
+    </div>
+  </section>
 
-<!-- TOP HOLDERS LEADERBOARD -->
-<section>
-<h2>🏆 Top Holders</h2>
-<div class="card">
-<ul id="leaderboard"></ul>
-</div>
-</section>
+  <section id="play">
+    <div class="container">
+      <p class="eyebrow reveal-item">// PROVE_IT</p>
+      <h2 class="reveal-item">🎮 Survival Run</h2>
+      <p class="play-intro reveal-item">Dodge the FUD, dodge the boots, grab every bag you can. How long can your roach survive?</p>
 
-<!-- ROACH SMASH GAME -->
-<section>
-<h2>🎮 Roach Smash Game</h2>
-<div id="game"></div>
-</section>
+      <div class="game-panel reveal-item">
+        <div class="game-hud">
+          <div class="hud-stat"><span>Score</span><b id="gameScore">0</b></div>
+          <div class="hud-stat"><span>Best</span><b id="gameBest">0</b></div>
+        </div>
+        <div class="canvas-wrap">
+          <canvas id="gameCanvas" width="360" height="480"></canvas>
+          <div class="game-overlay" id="gameOverlay">
+            <p class="game-overlay-title">🪳 Survival Run</p>
+            <p class="game-overlay-sub">Dodge the red threats, grab the gold coins and diamonds. Arrow keys or A/D to move — tap left or right on mobile.</p>
+            <button class="btn btn-primary" id="gameStartBtn" type="button">Start Game</button>
+          </div>
+        </div>
+      </div>
+      <p class="game-hint">← → or A / D to move &nbsp;·&nbsp; tap left/right on mobile</p>
+    </div>
+  </section>
 
-<!-- SOCIAL LINKS -->
-<section>
-<h2>📢 Join The Roach Army</h2>
-<div class="card social">
-<a href="https://x.com/Cockroaccoin" target="_blank">🐦 X</a>
-<a href="https://t.me/coackroajanarapartii" target="_blank">💬 Telegram</a>
-<a href="https://discord.gg/5dJdRhgFa" target="_blank">🎮 Discord</a>
-<a href="https://pump.fun" target="_blank">💰 Buy</a>
-</div>
-</section>
+  <section id="how-to-buy">
+    <div class="container">
+      <p class="eyebrow reveal-item">// GET_IN</p>
+      <h2 class="reveal-item">🔥 How to Buy $CCP</h2>
+      <div class="steps">
+        <div class="step reveal-item">
+          <div class="step-num">1</div>
+          <h3>Get a Wallet</h3>
+          <p>Download Phantom or Solflare and set up your Solana wallet in a couple of minutes.</p>
+        </div>
+        <div class="step reveal-item">
+          <div class="step-num">2</div>
+          <h3>Get SOL</h3>
+          <p>Buy SOL on any major exchange, or transfer some in, then send it to your new wallet.</p>
+        </div>
+        <div class="step reveal-item">
+          <div class="step-num">3</div>
+          <h3>Head to pump.fun</h3>
+          <p>Find the official $CCP page on pump.fun and connect your wallet.</p>
+          <a href="https://pump.fun" target="_blank" rel="noopener" class="step-link">Visit pump.fun →</a>
+        </div>
+        <div class="step reveal-item">
+          <div class="step-num">4</div>
+          <h3>Swap &amp; Survive</h3>
+          <p>Swap your SOL for $CCP, join the roach army, and hold on tight.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- FOOTER -->
+  <section id="tokenomics">
+    <div class="container tokenomics-grid">
+      <div class="reveal-item">
+        <p class="eyebrow">// THE_NUMBERS</p>
+        <h2>💰 Tokenomics</h2>
+        <div class="card token-card">
+          <div class="token-row"><span>Name</span><b>Cockroach Crypto Party</b></div>
+          <div class="token-row"><span>Ticker</span><b class="accent">$CCP</b></div>
+          <div class="token-row"><span>Blockchain</span><b>Solana</b></div>
+          <div class="token-row">
+            <span>Contract Address</span>
+            <b id="caText">Coming Soon</b>
+            <button class="copy-btn" id="copyCa" type="button">Copy</button>
+          </div>
+          <div class="token-row"><span>Total Supply</span><b>1,000,000,000 CCP</b></div>
+        </div>
+      </div>
+
+      <div class="chart-wrap reveal-item" id="chartWrap">
+        <svg class="donut-svg" id="donutSvg" viewBox="0 0 140 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="70" cy="70" r="55" stroke="var(--surface-2)" stroke-width="20" fill="none"/>
+          <circle cx="70" cy="70" r="55" stroke="#8cff00" stroke-width="20" fill="none" stroke-dasharray="276.46 69.12" stroke-dashoffset="0" transform="rotate(-90 70 70)"/>
+          <circle cx="70" cy="70" r="55" stroke="#ffc22e" stroke-width="20" fill="none" stroke-dasharray="34.56 311.02" stroke-dashoffset="-276.46" transform="rotate(-90 70 70)"/>
+          <circle cx="70" cy="70" r="55" stroke="#5a8f00" stroke-width="20" fill="none" stroke-dasharray="17.28 328.30" stroke-dashoffset="-311.02" transform="rotate(-90 70 70)"/>
+          <circle cx="70" cy="70" r="55" stroke="#d9ffb0" stroke-width="20" fill="none" stroke-dasharray="17.28 328.30" stroke-dashoffset="-328.30" transform="rotate(-90 70 70)"/>
+          <text x="70" y="75" text-anchor="middle" class="donut-center" font-family="JetBrains Mono, monospace">$CCP</text>
+        </svg>
+        <div class="legend">
+          <div class="legend-item"><span class="legend-dot" style="background:#8cff00"></span><span>💧 Liquidity</span><b data-count="80">0%</b></div>
+          <div class="legend-item"><span class="legend-dot" style="background:#ffc22e"></span><span>🌎 Community</span><b data-count="10">0%</b></div>
+          <div class="legend-item"><span class="legend-dot" style="background:#5a8f00"></span><span>📢 Marketing</span><b data-count="5">0%</b></div>
+          <div class="legend-item"><span class="legend-dot" style="background:#d9ffb0"></span><span>🛠 Development</span><b data-count="5">0%</b></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap">
+    <div class="container">
+      <p class="eyebrow reveal-item">// THE_PLAN</p>
+      <h2 class="reveal-item">🗺 Roadmap</h2>
+      <div class="timeline" id="timeline">
+        <div class="timeline-line"><div class="timeline-fill" id="timelineFill"></div></div>
+
+        <div class="phase reveal-item">
+          <div class="phase-marker">1</div>
+          <div class="card">
+            <h3>Phase 1 🥚 Egg Stage</h3>
+            <ul>
+              <li>Brand creation</li>
+              <li>Website launch</li>
+              <li>Social media setup</li>
+              <li>Meme campaign</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase reveal-item">
+          <div class="phase-marker">2</div>
+          <div class="card">
+            <h3>Phase 2 🪳 Baby Roach</h3>
+            <ul>
+              <li>Solana token launch</li>
+              <li>Community growth</li>
+              <li>Marketing campaigns</li>
+              <li>Exchange applications</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="phase reveal-item">
+          <div class="phase-marker">3</div>
+          <div class="card">
+            <h3>Phase 3 👑 Mega Roach</h3>
+            <ul>
+              <li>NFT collection</li>
+              <li>Global meme expansion</li>
+              <li>Community events</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="whitepaper">
+    <div class="container">
+      <p class="eyebrow reveal-item">// THE_DOCUMENT</p>
+      <h2 class="reveal-item">📄 Whitepaper</h2>
+      <div class="whitepaper-panel reveal-item">
+        <div class="wp-info">
+          <p>Everything about $CCP in one place — the concept, the mechanics, the tokenomics, and an honest look at the risks. No jargon, no promises. Just the facts, written straight.</p>
+          <a href="whitepaper.pdf" target="_blank" rel="noopener" class="btn btn-primary">📄 Download Whitepaper (PDF)</a>
+        </div>
+        <ul class="wp-chapters">
+          <li><span>01</span>Introduction &amp; Vision</li>
+          <li><span>02</span>How It Works</li>
+          <li><span>03</span>Tokenomics</li>
+          <li><span>04</span>Roadmap</li>
+          <li><span>05</span>Community &amp; Links</li>
+          <li><span>06</span>Risk Disclosure</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="container">
+      <p class="eyebrow reveal-item">// FREQUENTLY_ASKED</p>
+      <h2 class="reveal-item">❓ FAQ</h2>
+      <div class="faq-list">
+        <details class="faq-item reveal-item">
+          <summary>What is Cockroach Crypto Party ($CCP)?</summary>
+          <p>$CCP is a community-driven meme token on Solana, inspired by internet culture and the cockroach's legendary reputation for survival. It's built for entertainment and community — not as a financial product.</p>
+        </details>
+        <details class="faq-item reveal-item">
+          <summary>Is there a presale or team allocation?</summary>
+          <p>No private rounds and no whitelist. $CCP launches on pump.fun's public bonding curve, where every buyer — including the team — buys in from the same starting line.</p>
+        </details>
+        <details class="faq-item reveal-item">
+          <summary>Why Solana?</summary>
+          <p>Solana keeps fees down to a fraction of a cent with block times around 400ms, which makes frequent trading and tipping practical for a fast-moving meme community. See the comparison above.</p>
+        </details>
+        <details class="faq-item reveal-item">
+          <summary>Has the contract been audited?</summary>
+          <p>Not at this time. $CCP is an unaudited meme token, like the large majority of pump.fun launches. Treat it accordingly, and never risk more than you can afford to lose.</p>
+        </details>
+        <details class="faq-item reveal-item">
+          <summary>Is $CCP an investment?</summary>
+          <p>No. $CCP has no intrinsic value, no revenue, and no promise of returns. It exists for fun and community. Nothing on this site or in the whitepaper is financial advice — always DYOR.</p>
+        </details>
+        <details class="faq-item reveal-item">
+          <summary>Where can I ask questions or get support?</summary>
+          <p>Join the community on Telegram or Discord below — that's where the roach army hangs out and where the team is most active.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section id="community" style="position:relative;">
+    <div class="scuttle scuttle-2" aria-hidden="true">
+      <svg class="mini-roach" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20,18 L8,10"/><path d="M22,20 L4,20"/><path d="M20,24 L8,32"/>
+        <path d="M38,18 L50,10"/><path d="M38,20 L56,20"/><path d="M38,24 L50,32"/>
+        <ellipse cx="29" cy="20" rx="16" ry="10"/><ellipse cx="16" cy="14" rx="7" ry="6"/>
+        <path d="M14,9 Q8,2 3,1"/><path d="M19,9 Q22,2 27,1"/>
+      </svg>
+    </div>
+    <div class="container">
+      <p class="eyebrow reveal-item">// JOIN_THE_SWARM</p>
+      <h2 class="reveal-item">📢 Join The Roach Army</h2>
+      <div class="social-grid">
+        <a href="https://x.com/Cockroaccoin" target="_blank" rel="noopener" class="social-pill social-pill--live reveal-item">🐦 X / Twitter <span>Follow →</span></a>
+        <a href="https://t.me/coackroajanarapartii" target="_blank" rel="noopener" class="social-pill social-pill--live reveal-item">💬 Telegram <span>Join →</span></a>
+        <a href="https://discord.com/invite/5dJdRhgFa" target="_blank" rel="noopener" class="social-pill social-pill--live reveal-item">🎮 Discord <span>Join →</span></a>
+        <a href="https://pump.fun" target="_blank" rel="noopener" class="social-pill social-pill--live reveal-item">🚀 pump.fun <span>Visit →</span></a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
 <footer>
-<p>🪳 Cockroach Crypto Party ($CCP) © 2026</p>
+  <div class="container">
+    <img src="logo.png" alt="$CCP logo" class="footer-logo">
+    <p class="foot-title">🪳 Cockroach Crypto Party ($CCP)</p>
+    <p>A meme token created for entertainment and community culture.</p>
+    <p class="disclaimer">$CCP has no intrinsic value or promise of financial return and is not an investment product. Nothing on this site is financial advice — always DYOR.</p>
+    <p class="copyright">© 2026 CCP Community</p>
+  </div>
 </footer>
 
-<!-- Popup Notifications -->
-<div class="popup" id="popup"></div>
-
-<!-- Scripts -->
 <script>
-/* Toggle sound and vibration states */
-let soundOn = false;
-let vibrationOn = false;
+(function(){
+  // Nav scroll state
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){
+    nav.classList.toggle('scrolled', window.scrollY > 20);
+  });
 
-function toggleSound() {
-  soundOn = !soundOn;
-  alert("Sound " + (soundOn ? "Enabled" : "Disabled"));
-}
-function toggleVibration() {
-  vibrationOn = !vibrationOn;
-  alert("Vibration " + (vibrationOn ? "Enabled" : "Disabled"));
-}
+  // Mobile nav toggle
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  toggle.addEventListener('click', function(){
+    var open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){ links.classList.remove('open'); });
+  });
 
-/* Fake buy notifications */
-const names = ["Whale","Alpha","Trader","MoonBoy","Degenerate"];
-setInterval(()=>{
-  const popup = document.getElementById("popup");
-  popup.innerText = names[Math.floor(Math.random()*names.length)] + " bought " + (Math.random()*3).toFixed(2) + " SOL 🚀";
-  popup.className = "popup show";
-  setTimeout(()=>{
-    popup.className = "popup";
-  },3000);
-},4000);
+  // Copy contract address
+  var copyBtn = document.getElementById('copyCa');
+  var caText = document.getElementById('caText');
+  copyBtn.addEventListener('click', function(){
+    var text = caText.textContent.trim();
+    navigator.clipboard && navigator.clipboard.writeText(text).then(function(){
+      var original = copyBtn.textContent;
+      copyBtn.textContent = 'Copied!';
+      setTimeout(function(){ copyBtn.textContent = original; }, 1500);
+    });
+  });
 
-/* Leaderboard data (simulate) */
-const leaderboard = document.getElementById("leaderboard");
-for(let i=0;i<5;i++){
-  const li = document.createElement("li");
-  li.innerText = "Wallet_" + (i+1) + " — " + (Math.random()*100).toFixed(2) + " SOL";
-  leaderboard.appendChild(li);
-}
+  // Scroll reveal
+  var revealEls = document.querySelectorAll('.reveal-item');
+  var donut = document.getElementById('donutSvg');
+  var timelineFill = document.getElementById('timelineFill');
+  var phases = document.querySelectorAll('.phase');
+  var counted = false;
 
-/* Roach swarm animation */
-for(let i=0;i<8;i++){
-  const r=document.createElement("div");
-  r.innerText="🪳";
-  r.className="roach";
-  r.style.left=Math.random()*100+"vw";
-  r.style.top=Math.random()*100+"vh";
-  r.style.animationDuration=(8+Math.random()*6)+"s";
-  document.body.appendChild(r);
-}
+  var observer = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.2 });
 
-/* Roach Smash Game */
-const gameArea = document.getElementById("game");
-setInterval(()=>{
-  const r=document.createElement("div");
-  r.innerText="🪳";
-  r.className="roachGame";
-  r.style.left=Math.random()*90+"%";
-  r.style.top=Math.random()*80+"%";
-  r.onclick=()=>{
-    r.remove();
-    if(vibrationOn && navigator.vibrate) navigator.vibrate(30);
-    if(soundOn) new Audio("https://actions.google.com/sounds/v1/cartoon/pop.ogg").play();
-  };
-  gameArea.appendChild(r);
-  setTimeout(()=>{if(r.parentNode) r.remove();},3000);
-},1000);
+  revealEls.forEach(function(el){ observer.observe(el); });
+
+  // Donut + count-up
+  var chartObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting && !counted){
+        counted = true;
+        donut.classList.add('visible');
+        document.querySelectorAll('.legend-item b').forEach(function(el){
+          var target = parseInt(el.getAttribute('data-count'), 10);
+          var current = 0;
+          var step = Math.max(1, Math.round(target / 30));
+          var timer = setInterval(function(){
+            current += step;
+            if(current >= target){ current = target; clearInterval(timer); }
+            el.textContent = current + '%';
+          }, 25);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  chartObserver.observe(document.getElementById('chartWrap'));
+
+  // Roadmap fill + phase markers
+  var phaseObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        var idx = Array.prototype.indexOf.call(phases, entry.target);
+        var pct = ((idx + 1) / phases.length) * 100;
+        timelineFill.style.height = pct + '%';
+      }
+    });
+  }, { threshold: 0.4 });
+  phases.forEach(function(p){ phaseObserver.observe(p); });
+
+  // ============ SURVIVAL RUN GAME ============
+  (function(){
+    var canvas = document.getElementById('gameCanvas');
+    if(!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var LOGICAL_W = 360, LOGICAL_H = 480, LANES = 3;
+    var laneW = LOGICAL_W / LANES;
+
+    function setupCanvasDPI(){
+      var dpr = window.devicePixelRatio || 1;
+      canvas.width = LOGICAL_W * dpr;
+      canvas.height = LOGICAL_H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    setupCanvasDPI();
+    window.addEventListener('resize', setupCanvasDPI);
+
+    var overlay = document.getElementById('gameOverlay');
+    var scoreEl = document.getElementById('gameScore');
+    var bestEl = document.getElementById('gameBest');
+    var OBSTACLES = ['boot','danger'];
+    var COLLECTIBLES = ['coin','diamond'];
+
+    var state = null, rafId = null, best = 0;
+
+    function newState(){
+      return { lane:1, items:[], score:0, frame:0, spawnIn:55, speed:2.6, running:true, playerY:LOGICAL_H-70 };
+    }
+    function laneX(lane){ return lane * laneW + laneW/2; }
+
+    function spawnItem(){
+      var isCoin = Math.random() < 0.42;
+      var lane = Math.floor(Math.random() * LANES);
+      var pool = isCoin ? COLLECTIBLES : OBSTACLES;
+      var type = pool[Math.floor(Math.random() * pool.length)];
+      state.items.push({ lane:lane, y:-30, type:type, kind:isCoin?'good':'bad', value: type==='diamond' ? 15 : 5 });
+    }
+
+    function update(){
+      state.frame++;
+      state.speed = 2.6 + Math.min(3.2, state.score / 60);
+      var spawnBase = 55 - Math.min(30, Math.floor(state.score / 8));
+      state.spawnIn--;
+      if(state.spawnIn <= 0){
+        spawnItem();
+        state.spawnIn = Math.max(22, spawnBase) + Math.floor(Math.random()*8);
+      }
+      if(state.frame % 12 === 0){ state.score += 1; }
+
+      for(var i = state.items.length - 1; i >= 0; i--){
+        var it = state.items[i];
+        it.y += state.speed;
+        if(it.lane === state.lane && Math.abs(it.y - state.playerY) < 26){
+          if(it.kind === 'good'){
+            state.score += it.value;
+            state.items.splice(i, 1);
+            continue;
+          } else { gameOver(); return; }
+        }
+        if(it.y > LOGICAL_H + 30){ state.items.splice(i, 1); }
+      }
+      scoreEl.textContent = state.score;
+    }
+
+    function draw(){
+      ctx.clearRect(0, 0, LOGICAL_W, LOGICAL_H);
+      ctx.fillStyle = '#0b0e0a';
+      ctx.fillRect(0, 0, LOGICAL_W, LOGICAL_H);
+      ctx.strokeStyle = 'rgba(140,255,0,0.08)';
+      ctx.lineWidth = 2;
+      for(var l = 1; l < LANES; l++){
+        ctx.beginPath(); ctx.moveTo(l*laneW, 0); ctx.lineTo(l*laneW, LOGICAL_H); ctx.stroke();
+      }
+      ctx.fillStyle = 'rgba(140,255,0,0.06)';
+      ctx.fillRect(0, LOGICAL_H - 40, LOGICAL_W, 40);
+
+      state.items.forEach(drawItem);
+      drawPlayer(laneX(state.lane), state.playerY);
+    }
+
+    function drawItem(it){
+      var x = laneX(it.lane), y = it.y;
+      ctx.lineWidth = 2.5;
+      if(it.type === 'coin'){
+        ctx.beginPath(); ctx.arc(x, y, 13, 0, Math.PI*2);
+        ctx.fillStyle = '#ffc22e'; ctx.fill();
+        ctx.strokeStyle = '#8a6600'; ctx.stroke();
+        ctx.beginPath(); ctx.arc(x, y, 7, 0, Math.PI*2);
+        ctx.strokeStyle = 'rgba(255,255,255,0.55)'; ctx.lineWidth = 1.5; ctx.stroke();
+      } else if(it.type === 'diamond'){
+        ctx.save(); ctx.translate(x, y); ctx.rotate(Math.PI/4);
+        ctx.fillStyle = '#bff2ff'; ctx.fillRect(-9,-9,18,18);
+        ctx.strokeStyle = '#5fb8cc'; ctx.strokeRect(-9,-9,18,18);
+        ctx.restore();
+      } else if(it.type === 'boot'){
+        ctx.beginPath(); ctx.moveTo(x-14,y-9); ctx.lineTo(x+14,y-9); ctx.lineTo(x,y+15); ctx.closePath();
+        ctx.fillStyle = '#ff5c5c'; ctx.fill();
+        ctx.strokeStyle = '#7a0000'; ctx.stroke();
+      } else {
+        ctx.beginPath(); ctx.arc(x, y, 14, 0, Math.PI*2);
+        ctx.fillStyle = 'rgba(255,92,92,0.18)'; ctx.fill();
+        ctx.strokeStyle = '#ff5c5c'; ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(x-6,y-6); ctx.lineTo(x+6,y+6); ctx.moveTo(x+6,y-6); ctx.lineTo(x-6,y+6);
+        ctx.strokeStyle = '#ff5c5c'; ctx.stroke();
+      }
+    }
+
+    function drawPlayer(x, y){
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.shadowColor = 'rgba(140,255,0,0.85)';
+      ctx.shadowBlur = 16;
+
+      ctx.strokeStyle = '#0b0f07';
+      ctx.lineWidth = 3;
+      ctx.lineCap = 'round';
+      [[-10,-6,-21,-14],[-11,0,-23,0],[-10,6,-21,14],[10,-6,21,-14],[11,0,23,0],[10,6,21,14]].forEach(function(l){
+        ctx.beginPath(); ctx.moveTo(l[0],l[1]); ctx.lineTo(l[2],l[3]); ctx.stroke();
+      });
+      ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.moveTo(-4,-14); ctx.quadraticCurveTo(-11,-25,-17,-27); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(4,-14); ctx.quadraticCurveTo(11,-25,17,-27); ctx.stroke();
+
+      ctx.beginPath(); ctx.ellipse(0, 3, 18, 13, 0, 0, Math.PI*2);
+      ctx.fillStyle = '#8cff00'; ctx.fill();
+      ctx.strokeStyle = '#0b0f07'; ctx.lineWidth = 2.5; ctx.stroke();
+
+      ctx.beginPath(); ctx.ellipse(0, -11, 9, 7.5, 0, 0, Math.PI*2);
+      ctx.fillStyle = '#8cff00'; ctx.fill(); ctx.stroke();
+
+      ctx.beginPath(); ctx.arc(-3,-12,1.6,0,Math.PI*2); ctx.arc(3,-12,1.6,0,Math.PI*2);
+      ctx.fillStyle = '#0b0f07'; ctx.fill();
+
+      ctx.restore();
+    }
+
+    function loop(){
+      if(!state || !state.running) return;
+      update();
+      if(!state || !state.running) return;
+      draw();
+      rafId = requestAnimationFrame(loop);
+    }
+
+    function gameOver(){
+      state.running = false;
+      if(rafId) cancelAnimationFrame(rafId);
+      var isBest = state.score > best;
+      if(isBest){ best = state.score; bestEl.textContent = best; }
+      overlay.innerHTML =
+        '<p class="game-overlay-title">Roach Squashed 🪳💥</p>' +
+        '<p class="score-final">' + state.score + '</p>' +
+        '<p class="game-overlay-sub">' + (isBest && state.score > 0 ? 'New best!' : 'Best: ' + best) + '</p>' +
+        '<button class="btn btn-primary" id="gameStartBtn" type="button">Play Again</button>';
+      overlay.classList.remove('hidden');
+      bindStartButton();
+    }
+
+    function startGame(){
+      state = newState();
+      overlay.classList.add('hidden');
+      scoreEl.textContent = '0';
+      if(rafId) cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(loop);
+    }
+
+    function bindStartButton(){
+      var btn = document.getElementById('gameStartBtn');
+      if(btn){ btn.addEventListener('click', startGame, { once:true }); }
+    }
+    bindStartButton();
+
+    document.addEventListener('keydown', function(e){
+      if(!state || !state.running) return;
+      if(e.code === 'ArrowLeft' || e.code === 'KeyA'){ e.preventDefault(); state.lane = Math.max(0, state.lane-1); }
+      else if(e.code === 'ArrowRight' || e.code === 'KeyD'){ e.preventDefault(); state.lane = Math.min(LANES-1, state.lane+1); }
+    });
+
+    canvas.addEventListener('pointerdown', function(e){
+      if(!state || !state.running) return;
+      var rect = canvas.getBoundingClientRect();
+      var x = e.clientX - rect.left;
+      if(x < rect.width/2){ state.lane = Math.max(0, state.lane-1); }
+      else { state.lane = Math.min(LANES-1, state.lane+1); }
+    });
+  })();
+
+})();
 </script>
+
 </body>
 </html>
